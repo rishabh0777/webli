@@ -8,13 +8,14 @@
   --breakpoint-xl: 1440px;
 }
 
-
-body{
-  font-family: 'Inter', sans-serif;
+body {
+  font-family: "Inter", sans-serif;
+  background-color: black;
+  color: white;
 }
 
-h1, h2, h3{
-  font-family: 'Cormorant Garamond', serif;
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", serif;
 }
-
-
