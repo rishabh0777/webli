@@ -58,7 +58,7 @@ export default function Hero() {
     );
   }, []);
   return (
-    <section className="relative sm:min-h-[90svh] w-full px-[4vw] z-[50] top-[8vh] bg-black text-white">
+    <section className="relative sm:min-h-[90svh] w-full px-[4vw] z-[50] top-[8vh] bg-[#060606] text-white">
       <section className="w-full mt-[11vh] flex justify-center items-center gap-4">
         <h1 ref={heroHeadingRef1} className="text-[10vw] opacity-0">
           Webli Creative

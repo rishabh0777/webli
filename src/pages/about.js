@@ -3,7 +3,7 @@ import React from 'react'
 export default function About(){
   return(
       <>
-        About
+        <section className='w-full h-[100vh]'></section>
       </>
     )
 }

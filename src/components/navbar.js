@@ -8,37 +8,31 @@ export default function Navbar() {
   const logoRef = useRef(null);
   const menuBarRef = useRef(null);
 
-  //navbar hamburg effect -->
-  const toggleNavbar = () => {
-    if (!show) {
-      gsap.to(hamburgRef.current, {
-        left: 0,
-        duration: 0.2,
-        ease: "power3.inOut",
-      });
+  const toggleNavbar = ()=>{
+    if(!show){
+      gsap.fromTo(
+        hamburgRef.current,
+        {top: "-100%"},
+        {top: "0%", duration: 1.5, ease: "power3.inOut"}
+      )
       setShow(true);
-    } else {
-      gsap.to(hamburgRef.current, {
-        left: "100%",
-        duration: 0.7,
-        ease: " power3.inOut",
-      });
+    }else{
+      gsap.fromTo(
+        hamburgRef.current,
+        {top: "0%"},
+        {top: "-100%", duration: 1.5, ease: "power3.inOut"}
+      )
       setShow(false);
     }
-  };
+  }
 
-  // navbar option transition -->
-  useEffect(() => {
-    if (show) {
-      gsap.from(".navOptions li", {
-        y: 200,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        delay: 0.3,
-      });
+  useGSAP(()=>{
+    if(show){
+      gsap.fromTo(".navOptions li", {y: -30, opacity: 0}, {y: 0, opacity: 1, stagger: 0.1,delay: 0.8, ease: "power3.inOut"})
+    }else{
+      gsap.fromTo(".navOptions li", {y: 0, opacity: 1}, {y: -30, opacity: 0, stagger: 0.1, ease: "power3.inOut"})
     }
-  }, [show, setShow]);
+  },[show])
 
   // logo icon and menu icon transition -->
   useGSAP(() => {
@@ -61,7 +55,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed sm:w-screen top-0 h-[10vh] px-[4vw] flex justify-between items-center bg-black text-white z-[1000]">
+      <nav className="fixed sm:w-screen top-0 h-[10vh] px-[4vw] flex justify-between items-center overflow-hidden bg-[#060606] text-white z-[1000]">
         <section className="w-[13vw] absolute z-[905]">
           <img
             ref={logoRef}
@@ -79,7 +73,7 @@ export default function Navbar() {
         ></i>
         <section
           ref={hamburgRef}
-          className="fixed w-screen h-[100dvh] top-0 left-[100%] flex justify-center items-center bg-black z-[900] "
+          className="fixed w-screen h-[100dvh] top-[-100%] left-[0] flex justify-center items-center bg-[#060606] z-[900]"
         >
           <ul className="navOptions flex flex-col gap-6 text-[18vw] leading-[18vw] text-center">
             <li className="text-zinc-500">Home</li>
