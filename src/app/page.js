@@ -7,6 +7,7 @@ import HowWeWork from "@/pages/howWeWork";
 import Service from "@/pages/service";
 import ScrollToTop from "./scrollToTop";
 import About from "@/pages/about";
+import ImageReveal from "@/pages/ImageReveal";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <HowWeWork />
       <Service />
+      <ImageReveal />
       <About  />
     </section>
   );
