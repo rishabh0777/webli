@@ -19,3 +19,25 @@ h2,
 h3 {
   font-family: "Cormorant Garamond", serif;
 }
+
+#card1{
+  top: 55%;
+  left: 40%;
+}
+
+#card2{
+  top: 25%;
+  left: 40%;
+}
+#card3{
+  top: 55%;
+  left: 60%;
+}
+#card4{
+  top: 25%;
+  left: 80%;
+}
+#card5{
+  top: 55%;
+  left: 100%;
+}

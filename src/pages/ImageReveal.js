@@ -23,7 +23,7 @@ export default function ImageReveal() {
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: paraRef.current,
-                    start: "top 90%", // Ensure it animates when coming into view
+                    start: "top 80%", 
                     toggleActions: "play none none reverse",
                 }
             }
@@ -41,13 +41,17 @@ export default function ImageReveal() {
             gsap.set(images[i], { scale: 1 });
         }
 
+        // Dynamically adjust scroll distance based on screen size
+        const endValue = window.innerWidth < 768 ? `+=${window.innerHeight * (totalCards - 1) * 0.5}` : `+=${window.innerHeight * (totalCards - 1)}`;
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".sticky-card",
                 start: '-35%',
-                end: `+=${window.innerHeight * (totalCards - 1)}`,
+                end: endValue, 
                 pin: true,
                 scrub: 0.5,
+                // pinSpacing: false, // Prevents extra spacing issue
             }
         });
 
@@ -68,18 +72,19 @@ export default function ImageReveal() {
     }, { scope: container });
 
     return (
-        <section className='container py-3' ref={container}>
-            <section className='intro relative w-[100vw] h-[40vh] p-2 overflow-hidden flex justify-center items-center'>
-                <p ref={paraRef} className='text-[3vw] px-3'>
+        <section className='relative container py-3 overflow-hidden' ref={container}>
+            <section className='intro relative w-[100vw] h-[25vh] sm:h-[40vh] md:h-[30vh] lg:h-[35vh] p-3 flex justify-center items-center'>
+                <p ref={paraRef} className='text-[4vw] px-3 text-center'>
                     Immerse yourself in a visually stunning experience where every scroll brings innovation to life. 
                     Through seamless motion and creative interactions, we push the boundaries of web animation.
                 </p>
             </section>
-            <section className='sticky-card relative w-[100vw] h-screen p-2 overflow-hidden flex justify-content-center'>
-                <section className='cards-container position relative sm:w-full sm:h-[35%] rounded-lg overflow-hidden'>
+
+            <section className='sticky-card relative w-[100vw] h-[30vh] sm:h-[40vh] md:h-[35vh] lg:h-[40vh] p-2 flex justify-center'>
+                <section className='cards-container relative sm:w-full sm:h-[100%] rounded-lg overflow-hidden'>
                     {[...Array(7)].map((_, index) => (
                         <section key={index} className='card absolute w-full h-full rounded-md overflow-hidden'>
-                            <section className='tag absolute top-[1em] left-[1em] p-2 rounded-xl z-1 bg-black text-white px-4 py-2'>
+                            <section className='tag absolute top-[1em] left-[1em] p-2 rounded-xl z-10 bg-black text-white px-4 py-2'>
                                 <p>{tags[index]}</p>
                             </section>
                             <img

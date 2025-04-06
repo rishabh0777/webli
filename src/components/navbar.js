@@ -7,6 +7,39 @@ export default function Navbar() {
   const hamburgRef = useRef(null);
   const logoRef = useRef(null);
   const menuBarRef = useRef(null);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(()=>{
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    }
+    
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, [lastScrollY])
+
+  useEffect(()=>{
+    if(!isVisible){
+      gsap.fromTo(
+       '.navbar',
+        {top: "0%"},
+        {top: "-100%", duration: 1.5, ease: "power3.inOut"}
+      )
+      setShow(false);
+    }else{
+      gsap.fromTo('.navbar', {top: "-100%"}, {top: "0%", duration: 1.5, ease: "power3.inOut"})
+    }
+  }, [isVisible]);
 
   const toggleNavbar = ()=>{
     if(!show){
@@ -55,7 +88,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed sm:w-screen top-0 h-[10vh] px-[4vw] flex justify-between items-center overflow-hidden bg-[#060606] text-white z-[1000]">
+      <nav className="navbar fixed sm:w-screen top-0 h-[10vh] px-[4vw] flex justify-between items-center overflow-hidden bg-[#060606] text-white z-[1000]">
         <section className="w-[13vw] absolute z-[905]">
           <img
             ref={logoRef}

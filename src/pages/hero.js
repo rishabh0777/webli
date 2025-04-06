@@ -3,46 +3,78 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 export default function Hero() {
-  const heroHeadingRef1 = useRef(null);
-  const heroHeadingRef2 = useRef(null);
-  const smallHeroTextRef1 = useRef(null);
-  const smallHeroTextRef2 = useRef(null);
-  const heroImageRef = useRef(null);
   const scrollIndicatorRef = useRef(null);
+  const imageRef = useRef(null);
+  const mainText1Ref = useRef(null);
+  const mainText2Ref = useRef(null);
+  const paraText1Ref = useRef(null);
+  const paraText2Ref = useRef(null);
+
+  
 
   useGSAP(() => {
     let tl = gsap.timeline();
-    tl.add("b");
+   
+
     tl.fromTo(
-      heroHeadingRef1.current,
-      { x: -200, opacity: 0 },
-      { x: 0, opacity: 1, duration: 2, ease: "power3.inOut" },
-      "b"
-    );
-    tl.fromTo(
-      heroHeadingRef2.current,
-      { x: 200, opacity: 0 },
-      { x: 0, opacity: 1, duration: 2, ease: "power3.inOut" },
-      "b"
-    );
-    tl.fromTo(
-      smallHeroTextRef1.current,
-      { y: -200, opacity: 0 },
-      { y: 0, opacity: 1, duration: 2, ease: "power3.inOut" },
-      "b"
-    );
-    tl.fromTo(
-      smallHeroTextRef2.current,
-      { y: 200, opacity: 0 },
-      { y: 0, opacity: 1, duration: 2, ease: "power3.inOut" },
-      "b"
-    );
-    tl.fromTo(
-      heroImageRef.current,
-      { y: 200, opacity: 0, scale: 0 },
-      { y: 0, opacity: 1, duration: 2, ease: "power3.inOut", scale: 1 },
-      "b"
-    );
+      imageRef.current,{
+        opacity: 0,
+        scale:0.2,
+        y:-500,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.5,
+        ease: "power2.out",
+      })
+      tl.add("a");
+      tl.fromTo(
+        mainText1Ref.current,
+        { opacity: 0, y: -30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power2.out",
+        }, 'a'
+      );
+      tl.fromTo(
+        mainText2Ref.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.5,
+          ease: "power2.out",
+        },'a'
+      );
+      tl.add('b')
+
+      tl.fromTo(
+        paraText1Ref.current,
+        { opacity: 0, y: -30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+        },'b'
+      );
+      tl.fromTo(
+        paraText2Ref.current,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+        },'b'
+      );
+      
+    
+   
     tl.fromTo(
       scrollIndicatorRef.current,
       { y: -10, opacity: 0 },
@@ -58,39 +90,23 @@ export default function Hero() {
     );
   }, []);
   return (
-    <section className="relative sm:min-h-[90svh] w-full px-[4vw] z-[50] top-[8vh] bg-[#060606] text-white">
-      <section className="w-full mt-[11vh] flex justify-center items-center gap-4">
-        <h1 ref={heroHeadingRef1} className="text-[10vw] opacity-0">
-          Webli Creative
-        </h1>
-        <p
-          ref={smallHeroTextRef1}
-          className="text-[2.8vw] text-center opacity-0"
-        >
-          Based in
-          <br /> India
-        </p>
+    <section className="relative sm:min-h-[92svh] w-full px-[4vw] z-[50] top-[8vh] bg-[#060606] text-white">
+      {/* Header Section */}
+      <section className="w-full min-h-[50vh] mt-[10vh] px-[2vw]">
+        <section className="flex items-center justify-center gap-4 overflow-hidden">
+          <h1 ref={mainText1Ref} className="text-[8vw] font-semibold opacity-0">Webli Creative</h1>
+        <p ref={paraText1Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0">Based in<br />India</p>
+        </section>
+        <section className="flex items-center justify-center gap-2 overflow-hidden">
+        <p ref={paraText2Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0">We carft high-performance websites<br /> with stunning design and smooth<br /> functionality.</p>
+        <h1 ref={mainText2Ref} className="text-[8vw] font-semibold opacity-0">/Agency</h1>
       </section>
-      <section className="w-full flex justify-center items-center gap-4">
-        <p
-          ref={smallHeroTextRef2}
-          className="text-[2.8vw] text-center w-[50vw] flex opacity-0"
-        >
-          We craft high-performance websites with stunning design and smooth
-          functionality.
-        </p>
-        <h1 ref={heroHeadingRef2} className="text-[10vw] opacity-0">
-          /Agency
-        </h1>
+      <section className="w-full rounded-lg overflow-hidden mt-[8vh]">
+        <img ref={imageRef} className="w-full h-full object-cover opacity-0" src="/images/hero3.jpg" alt="" />
+
       </section>
-      <section className="w-full min-h-[20vh] mt-[8vh]">
-        <img
-          ref={heroImageRef}
-          src="/images/hero3.jpg"
-          alt="webli creative web development agency"
-          className="w-full opacity-0"
-        />
       </section>
+     
 
       {/* Scroll Indicator */}
       <section className="flex flex-col items-center mt-[10vh]">
@@ -101,6 +117,7 @@ export default function Hero() {
           <i className="bx bx-chevron-down text-3xl"></i>
         </div>
       </section>
+      
     </section>
   );
 }
