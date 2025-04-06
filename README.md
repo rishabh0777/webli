@@ -1,37 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌐 Webli – Modern MERN Stack Web Agency
 
-## Getting Started
+**Webli** is a creative web agency specializing in modern, animated, and responsive websites. Whether you need a sleek portfolio, a scalable business site, or a fully functional web app — we bring ideas to life with clean code and seamless design.
 
-First, run the development server:
+## 🚀 What We Do
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+We build custom websites in three tiers:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. **Basic Websites**
+- Clean single-page layout
+- Responsive design
+- Lightweight animations
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 2. **Intermediate Websites**
+- Multi-page setup
+- Service sections, blogs, or galleries
+- Contact forms
+- Smooth animations using GSAP / Framer Motion
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. **Advanced Websites**
+- Full-stack functionality (MERN)
+- User authentication
+- Admin dashboard
+- MongoDB integration
+- Interactive, dynamic frontend
 
-## Learn More
+## 🛠 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: React.js, Tailwind CSS, GSAP, Framer Motion  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB (via MongoDB Atlas)  
+- **Deployment**: Vercel / GitHub Pages / Render
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 💼 Our Team
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+A passionate team of developers dedicated to building high-quality digital products using the latest technologies.
 
-## Deploy on Vercel
+| Role             | Name                  |
+|------------------|-----------------------|
+| Project Lead     | Rishabh Srivastava    |
+| Frontend Dev     | [Teammate Name]       |
+| Backend Dev      | [Teammate Name]       |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧩 Why Choose Us?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# webli
+- Sleek UI & modern animations
+- Pixel-perfect responsiveness
+- Full-stack capabilities
+- SEO-friendly structure
+- Custom design tailored to your vision
+
+## 📫 Contact
+
+Have a project in mind? Let’s make it happen.
+
+📧 Email: [rishabhsrivastava7777@gmail.com](mailto:rishabhsrivastava7777@gmail.com)  
+🌐 Website: [Webli](https://rishabh0777.github.io/Webli)
+
+---
+
