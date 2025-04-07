@@ -3,12 +3,12 @@
 import React from "react";
 import Hero from "@/pages/hero";
 import Navbar from "@/components/navbar";
-import HowWeWork from "@/pages/howWeWork";
 import Service from "@/pages/service";
+import HorizontalScrollText from "@/pages/horizontalScrollText"
 import About from "@/pages/about";
 import ImageReveal from "@/pages/ImageReveal";
 import ScrollToTop from "@/components/scrollToTop";
-import OurTeam from "@/pages/ourTeam";
+import Footer from "@/pages/footer"
 
 export default function Home() {
   return (
@@ -16,11 +16,11 @@ export default function Home() {
       <ScrollToTop />
       <Navbar />
       <Hero />
-      <HowWeWork />
       <Service />
+      <HorizontalScrollText />
       <ImageReveal />
-      <OurTeam />
       <About  />
+      <Footer />
     </section>
   );
 }

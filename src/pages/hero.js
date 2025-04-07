@@ -36,7 +36,7 @@ export default function Hero() {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: 1,
           ease: "power2.out",
         }, 'a'
       );
@@ -46,7 +46,7 @@ export default function Hero() {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
+          duration: 1,
           ease: "power2.out",
         },'a'
       );
@@ -58,7 +58,7 @@ export default function Hero() {
         {
           opacity: 1,
           y: 0,
-          duration: 1.2,
+          duration: 0.7,
           ease: "power2.out",
         },'b'
       );
@@ -68,7 +68,7 @@ export default function Hero() {
         {
           opacity: 1,
           y: 0,
-          duration: 1.2,
+          duration: 0.7,
           ease: "power2.out",
         },'b'
       );
@@ -95,10 +95,10 @@ export default function Hero() {
       <section className="w-full min-h-[50vh] mt-[10vh] px-[2vw]">
         <section className="flex items-center justify-center gap-4 overflow-hidden">
           <h1 ref={mainText1Ref} className="text-[8vw] font-semibold opacity-0">Webli Creative</h1>
-        <p ref={paraText1Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0">Based in<br />India</p>
+        <p ref={paraText1Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0 text-gray-300">Based in<br />India</p>
         </section>
         <section className="flex items-center justify-center gap-2 overflow-hidden">
-        <p ref={paraText2Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0">We carft high-performance websites<br /> with stunning design and smooth<br /> functionality.</p>
+        <p ref={paraText2Ref} className="text-[2.9vw] leading-[2.9vw] text-center opacity-0 text-gray-300">We carft high-performance websites<br /> with stunning design and smooth<br /> functionality.</p>
         <h1 ref={mainText2Ref} className="text-[8vw] font-semibold opacity-0">/Agency</h1>
       </section>
       <section className="w-full rounded-lg overflow-hidden mt-[8vh]">

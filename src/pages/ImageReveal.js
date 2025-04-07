@@ -11,23 +11,9 @@ export default function ImageReveal() {
     const tags = ["Innovation", "Motion", "Discovery", "Creativity", "Transformation", "Futuristic", "Immersive"];
 
     useGSAP(() => {
-        if (!paraRef.current || !container.current) return;
+        if (!container.current) return;
 
-        gsap.fromTo(paraRef.current, 
-            { opacity: 0, x: -40, scale: 0.5 }, 
-            { 
-                opacity: 1, 
-                x: 0, 
-                scale: 1,
-                duration: 1, 
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: paraRef.current,
-                    start: "top 80%", 
-                    toggleActions: "play none none reverse",
-                }
-            }
-        );
+        
 
         const cards = container.current.querySelectorAll('.card');
         const images = container.current.querySelectorAll('.card img');
@@ -47,7 +33,7 @@ export default function ImageReveal() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".sticky-card",
-                start: '-35%',
+                start: '-30%',
                 end: endValue, 
                 pin: true,
                 scrub: 0.5,
@@ -74,11 +60,9 @@ export default function ImageReveal() {
     return (
         <section className='relative container py-3 overflow-hidden' ref={container}>
             <section className='intro relative w-[100vw] h-[25vh] sm:h-[40vh] md:h-[30vh] lg:h-[35vh] p-3 flex justify-center items-center'>
-                <p ref={paraRef} className='text-[4vw] px-3 text-center'>
-                    Immerse yourself in a visually stunning experience where every scroll brings innovation to life. 
-                    Through seamless motion and creative interactions, we push the boundaries of web animation.
-                </p>
-            </section>
+    
+</section>
+
 
             <section className='sticky-card relative w-[100vw] h-[30vh] sm:h-[40vh] md:h-[35vh] lg:h-[40vh] p-2 flex justify-center'>
                 <section className='cards-container relative sm:w-full sm:h-[100%] rounded-lg overflow-hidden'>

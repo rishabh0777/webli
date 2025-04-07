@@ -135,8 +135,8 @@ useGSAP(() => {
 
 
   return (
-    <section className="relative w-full min-h-[50vh]">
-        <section className='w-full mt-[8vh] px-[4vw] text-center overflow-hidden text-[7vw]'>
+    <section className="relative w-full min-h-[50vh] mt-[6vh]">
+        <section className='w-full px-[4vw] py-[4vh] text-center overflow-hidden text-[7vw]'>
         <section><h2 ref={head1} >
           Creative Coders
         </h2></section>
