@@ -8,7 +8,8 @@ import HorizontalScrollText from "@/pages/horizontalScrollText"
 import About from "@/pages/about";
 import ImageReveal from "@/pages/ImageReveal";
 import ScrollToTop from "@/components/scrollToTop";
-import Footer from "@/pages/footer"
+import Portfolio from "@/pages/portfolio";
+import Contact from "@/pages/contact";
 
 export default function Home() {
   return (
@@ -20,7 +21,8 @@ export default function Home() {
       <HorizontalScrollText />
       <ImageReveal />
       <About  />
-      <Footer />
+      <Portfolio />
+      <Contact />
     </section>
   );
 }
