@@ -39,8 +39,8 @@ export default function Portfolio() {
       tl.fromTo(
         ref,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 1 },
-        `-=${0.4}` // small overlap
+        { opacity: 1, y: 0, duration: 1.5 },
+        `-=${0.8}` // small overlap
       );
     });
   }, []);
@@ -55,7 +55,7 @@ export default function Portfolio() {
           <section
             key={index}
             ref={(el) => (projectRefs.current[index] = el)}
-            className='w-full flex justify-between items-center border-b border-gray-600 pb-2 mt-6'
+            className='w-full flex justify-between items-center border-b border-gray-600 pb-2 mt-6 transition-all duration-500'
           >
             <h2 className='text-[10vw]'>{project.name}</h2>
             <i

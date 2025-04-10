@@ -112,7 +112,7 @@ export default function Hero() {
       <section className="flex flex-col items-center mt-[10vh]">
         <div
           ref={scrollIndicatorRef}
-          className="w-14 h-14 flex items-center justify-center rounded-full bg-white text-black shadow-lg animate-bounce"
+          className="w-14 h-14 opacity-0 flex items-center justify-center rounded-full bg-white text-black shadow-lg animate-bounce"
         >
           <i className="bx bx-chevron-down text-3xl"></i>
         </div>

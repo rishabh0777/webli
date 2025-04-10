@@ -46,9 +46,9 @@ export default function ImageReveal() {
             const currentImage = images[i];
             const nextCard = cards[i + 1];
 
-            tl.to(currentCard, { scale: 0.5, rotation: 10, duration: 1, ease: 'none' }, i);
-            tl.to(currentImage, { scale: 1.5, duration: 1, ease: 'none' }, i);
-            tl.to(nextCard, { y: '0%', duration: 1, ease: 'none' }, i);
+            tl.to(currentCard, { scale: 0.5, rotation: 10, duration: 1, ease: 'linear' }, i);
+            tl.to(currentImage, { scale: 1.5, duration: 1, ease: 'linear' }, i);
+            tl.to(nextCard, { y: '0%', duration: 1, ease: 'linear' }, i);
         }
 
         return () => {
