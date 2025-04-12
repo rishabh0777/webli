@@ -3,7 +3,7 @@
 
 @theme {
   --breakpoint-sm: 360px;
-  --breakpoint-md: 768px;
+  --breakpoint-md: 758px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1440px;
 }
@@ -12,6 +12,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #060606;
   color: white;
+  overflow-x: hidden;
 }
 
 h1,

@@ -47,7 +47,7 @@ export default function Portfolio() {
 
   return (
     <section className='relative w-full min-h-[80vh] px-[4vw] py-[8vh]'>
-      <h1 ref={headRef} className='text-[10vw] text-center font-bold'>
+      <h1 ref={headRef} className='sm:text-[10vw] md:text-[6vw] text-center'>
         Portfolio
       </h1>
       <section className='w-full h-full mt-[10vh]'>
@@ -57,10 +57,10 @@ export default function Portfolio() {
             ref={(el) => (projectRefs.current[index] = el)}
             className='w-full flex justify-between items-center border-b border-gray-600 pb-2 mt-6 transition-all duration-500'
           >
-            <h2 className='text-[10vw]'>{project.name}</h2>
+            <h2 className='sm:text-[10vw] md:text-[3.5vw]'>{project.name}</h2>
             <i
               onClick={() => redirectURL(project.url)}
-              className='bx bx-right-arrow-alt text-[8vw] -rotate-45 cursor-pointer'
+              className='bx bx-right-arrow-alt sm:text-[8vw] md:text-[5vw] -rotate-45 cursor-pointer'
             ></i>
           </section>
         ))}

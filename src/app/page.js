@@ -13,7 +13,7 @@ import Contact from "@/pages/contact";
 
 export default function Home() {
   return (
-    <section className="relative w-full bg-[#060606] overflow-x-hidden">
+    <section className="relative w-full bg-[#060606] overflow-hidden">
       <ScrollToTop />
       <Navbar />
       <Hero />

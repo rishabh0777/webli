@@ -12,7 +12,7 @@ export default function OurTeam() {
   const head2 = useRef(null);
   const myTeam = [
     {
-      name: 'member1',
+      name: 'Pawan',
       role: 'Frontend Developer',
       img: '/images/member2.jpg',
       bg: 'bg-blue-200',
@@ -26,7 +26,7 @@ export default function OurTeam() {
       myRef: member2
       }, 
     {
-      name: 'member3',
+      name: 'Anshuman',
       role: 'Backend Developer',
       img: '/images/member3.jpg',
       bg: 'bg-green-200',
@@ -136,7 +136,7 @@ useGSAP(() => {
 
   return (
     <section className="relative w-full min-h-[50vh] mt-[6vh]">
-        <section className='w-full px-[4vw] py-[4vh] text-center overflow-hidden text-[7vw]'>
+        <section className='w-full px-[4vw] py-[4vh] text-center overflow-hidden sm:text-[7vw] md:text-[4vw] md:leading-[4vw]'>
         <section><h2 ref={head1} >
           Creative Coders
         </h2></section>
@@ -144,7 +144,7 @@ useGSAP(() => {
           United by Passion
         </h2></section>
       </section>
-      <section className='w-full flex justify-center gap-2 mt-[8vh]'>
+      <section className='w-full flex justify-center sm:gap-2 md:gap-6 mt-[8vh]'>
         {
           myTeam.map((detail, index)=>{
             return(

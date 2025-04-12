@@ -85,15 +85,15 @@ export default function About() {
   }, []);
 
   return (
-    <section className="w-full min-h-[100vh] py-10 px-[4vw]">
+    <section className="relative w-full min-h-[100vh] py-10 px-[4vw]">
       <h1
         ref={headRef}
-        className="text-[10vw] font-bold text-center text-white"
+        className="sm:text-[10vw] md:text-[4vw] font-bold text-center text-white"
       >
         About Us
       </h1>
 
-      <section className="text-base sm:text-[3.4vw] md:text-xl lg:text-2xl flex flex-col gap-5 mt-[6vh] text-white">
+      <section className="text-base sm:text-[3.4vw] md:text-[1.2vw] flex flex-col gap-5 mt-[6vh] text-white">
         <p ref={paraRef1}>
           At Webli, we’re passionate about transforming ideas into interactive,
           visually stunning, and high-performing websites. Built on creativity

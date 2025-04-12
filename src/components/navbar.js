@@ -7,45 +7,17 @@ export default function Navbar() {
   const hamburgRef = useRef(null);
   const logoRef = useRef(null);
   const menuBarRef = useRef(null);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
 
-  useEffect(()=>{
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-    }
-    
-    window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    }
-  }, [lastScrollY])
 
-  useEffect(()=>{
-    if(!isVisible){
-      gsap.fromTo(
-       '.navbar',
-        {top: "0%"},
-        {top: "-100%", duration: 1.5, ease: "power3.inOut"}
-      )
-      setShow(false);
-    }else{
-      gsap.fromTo('.navbar', {top: "-100%"}, {top: "0%", duration: 1.5, ease: "power3.inOut"})
-    }
-  }, [isVisible]);
+
+  
 
   const toggleNavbar = ()=>{
     if(!show){
       gsap.fromTo(
         hamburgRef.current,
-        {top: "-100%"},
+        {top: "-100vh"},
         {top: "0%", duration: 1.5, ease: "power3.inOut"}
       )
       setShow(true);
@@ -53,7 +25,7 @@ export default function Navbar() {
       gsap.fromTo(
         hamburgRef.current,
         {top: "0%"},
-        {top: "-100%", duration: 1.5, ease: "power3.inOut"}
+        {top: "-100vh", duration: 1.5, ease: "power3.inOut"}
       )
       setShow(false);
     }
@@ -88,11 +60,11 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar fixed sm:w-screen top-0 h-[10vh] px-[4vw] flex justify-between items-center overflow-hidden bg-[#060606] text-white z-[1000]">
-        <section className="w-[13vw] absolute z-[905]">
+      <nav className="navbar fixed sm:w-screen top-0 sm:h-[10vh] md:h-[8vh] px-[4vw] flex justify-between items-center overflow-hidden bg-transparent text-white z-[1000]">
+        <section className="sm:w-[13vw] md:w-[4vw] absolute z-[905] overflow-hidden">
           <img
             ref={logoRef}
-            src="/logo/Black.png"
+            src="/logo/TransparentWhite.png"
             alt="webli creative web development agency"
             className="w-full opacity-0"
           />
@@ -102,18 +74,18 @@ export default function Navbar() {
           ref={menuBarRef}
           className={`${
             show ? "bx bx-x" : "bx bx-menu"
-          } text-3xl absolute right-[4vw] transition duration-700 z-[905] opacity-0`}
+          } sm:text-3xl md:text-2xl cursor-pointer absolute right-[4vw] transition duration-700 z-[905] opacity-0`}
         ></i>
         <section
           ref={hamburgRef}
-          className="fixed w-screen h-[100dvh] top-[-100%] left-[0] flex justify-center items-center bg-[#060606] z-[900]"
+          className="fixed w-screen h-screen top-[-100vh] left-[0] flex justify-center items-center bg-[#060606] z-[900] overflow-hidden"
         >
-          <ul className="navOptions flex flex-col gap-6 text-[18vw] leading-[18vw] text-center">
-            <li className="text-zinc-500">Home</li>
-            <li>Services</li>
-            <li>Portfolio</li>
-            <li>About</li>
-            <li>Contact</li>
+          <ul className="navOptions flex flex-col gap-6 sm:text-[18vw] sm:leading-[18vw] md:text-[5vw] md:leading-[5vw] text-center">
+            <li className="text-zinc-500 cursor-pointer">Home</li>
+            <li className="cursor-pointer">Services</li>
+            <li className="cursor-pointer">Portfolio</li>
+            <li className="cursor-pointer">About</li>
+            <li className="cursor-pointer">Contact</li>
           </ul>
         </section>
       </nav>
