@@ -14,21 +14,21 @@ export default function OurTeam() {
     {
       name: 'Pawan',
       role: 'Frontend Developer',
-      img: '/images/member2.jpg',
+      img: '/images/pawan.jpeg',
       bg: 'bg-blue-200',
       myRef: member1
     },
     {
       name: 'Rishabh',
       role: 'Fullstack Developer (founder)',
-      img: '/images/member1.jpg',
+      img: '/images/rishabh.jpeg',
       bg: 'bg-yellow-200',
       myRef: member2
       }, 
     {
       name: 'Anshuman',
       role: 'Backend Developer',
-      img: '/images/member3.jpg',
+      img: '/images/anshuman.jpeg',
       bg: 'bg-green-200',
       myRef: member3
     }
