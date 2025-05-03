@@ -38,8 +38,8 @@ A passionate team of developers dedicated to building high-quality digital produ
 | Role             | Name                  |
 |------------------|-----------------------|
 | Project Lead     | Rishabh Srivastava    |
-| Frontend Dev     | [Teammate Name]       |
-| Backend Dev      | [Teammate Name]       |
+| Frontend Dev     | Pawan Kumar       |
+| Backend Dev      | Anshuman Singh       |
 
 ## 🧩 Why Choose Us?
 
