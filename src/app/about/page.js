@@ -1,9 +1,12 @@
-import React, { useRef } from 'react';
-import OurTeam from './ourTeam';
+"use client";
+
+import React, { useRef, useState } from 'react';
+import OurTeam from '../../pages/ourTeam';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
+import axios from 'axios';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,6 +14,8 @@ export default function About() {
   const headRef = useRef(null);
   const paraRef1 = useRef(null);
   const paraRef2 = useRef(null);
+
+
 
   // Heading animation
   useGSAP(() => {
@@ -84,8 +89,10 @@ export default function About() {
     return () => split2.revert();
   }, []);
 
+  
+
   return (
-    <section className="relative w-full min-h-[100vh] py-10 px-[4vw]">
+    <section id="about" className="relative w-full min-h-[100vh] py-10 px-[4vw]">
       <h1
         ref={headRef}
         className="sm:text-[10vw] md:text-[4vw] font-bold text-center text-white"

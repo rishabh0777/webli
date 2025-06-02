@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -90,7 +92,7 @@ export default function Hero() {
     );
   }, []);
   return (
-    <section className="relative sm:min-h-[92svh] md:min-h-[100svh] w-full px-[4vw] z-[50] sm:top-[8vh] md:top-0 bg-[#060606] text-white overflow-hidden">
+    <section id="home" className="relative sm:min-h-[92svh] md:min-h-[100svh] w-full px-[4vw] z-[50] sm:top-[8vh] md:top-0 bg-[#060606] text-white overflow-hidden">
       {/* Header Section */}
       <section className="w-full min-h-[50vh] sm:mt-[10vh] md:mt-[8vh] px-[2vw]">
         <section className="flex items-center justify-center gap-4 overflow-hidden">

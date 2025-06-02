@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -116,6 +118,7 @@ export default function Service() {
 
   return (
     <section
+    id="service"
       className="relative w-full min-h-[90vh] md:min-h-screen overflow-hidden px-6 py-20 md:px-20"
     >
       <h1 ref={headRef1} className="text-center text-[10vw] md:text-[4vw] font-bold tracking-wider mb-5">

@@ -1,15 +1,16 @@
 "use client";
 
 import React from "react";
-import Hero from "@/pages/hero";
-import Navbar from "@/components/navbar";
-import Service from "@/pages/service";
-import HorizontalScrollText from "@/pages/horizontalScrollText"
-import About from "@/pages/about";
-import ImageReveal from "@/pages/ImageReveal";
-import ScrollToTop from "@/components/scrollToTop";
-import Portfolio from "@/pages/portfolio";
-import Contact from "@/pages/contact";
+import Hero from "./home/page.js";                    // ✅ ./home/page.js
+import Navbar from "../components/navbar";    // ✅ ../components/navbar.js
+import Service from "./service/page.js";              // ✅ ./service/page.js
+import HorizontalScrollText from "../pages/horizontalScrollText.js";
+import About from "./about/page.js";
+import ImageReveal from "../pages/ImageReveal.js";
+import ScrollToTop from "../components/scrollToTop";
+import Portfolio from "./portfolio/page.js";
+import Contact from "./contact/page.js";
+
 
 export default function Home() {
   return (

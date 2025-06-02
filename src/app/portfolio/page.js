@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -46,7 +48,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section className='relative w-full min-h-[80vh] px-[4vw] py-[8vh]'>
+    <section id="portfolio" className='relative w-full min-h-[80vh] px-[4vw] py-[8vh]'>
       <h1 ref={headRef} className='sm:text-[10vw] md:text-[6vw] text-center'>
         Portfolio
       </h1>
