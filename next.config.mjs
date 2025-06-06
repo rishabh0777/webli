@@ -6,6 +6,7 @@ const nextConfig = {
       "http://localhost:3000",
       "https://ztj82y-3000.csb.app/",
     ],
+    output: "export",
   },
 };
 
