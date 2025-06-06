@@ -4,9 +4,9 @@ import React from "react";
 import Hero from "./home/page.js";                    // ✅ ./home/page.js
 import Navbar from "../components/navbar";    // ✅ ../components/navbar.js
 import Service from "./service/page.js";              // ✅ ./service/page.js
-import HorizontalScrollText from "../pages/horizontalScrollText.js";
+import HorizontalScrollText from "../components/horizontalScrollText.js";
 import About from "./about/page.js";
-import ImageReveal from "../pages/ImageReveal.js";
+import ImageReveal from "../components/ImageReveal.js";
 import ScrollToTop from "../components/scrollToTop";
 import Portfolio from "./portfolio/page.js";
 import Contact from "./contact/page.js";

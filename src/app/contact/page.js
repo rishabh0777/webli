@@ -9,27 +9,26 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const sectionRef = useRef(null);
-  const [year, setYear] = useState(2023)
-  const [myMessage, setMyMessage] = useState('')
+  const [year, setYear] = useState(2023);
+  const [myMessage, setMyMessage] = useState('');
   const [formData, setFormData] = useState({
-    name:"",
-    email:"",
-    subject:"",
-    message:"",
-    company:""
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    company: ""
   });
 
-  const handleChange = (e)=>{
+  const handleChange = (e) => {
     e.preventDefault();
-    const {name, value} = e.target;
-    setFormData((prev)=>({...prev, [name]: value}));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
- 
-  useEffect(()=>{
-    const date = new Date()
-    setYear(date.getFullYear())
-  },[])
+  useEffect(() => {
+    const date = new Date();
+    setYear(date.getFullYear());
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -117,7 +116,7 @@ export default function Contact() {
               scrollTrigger: {
                 trigger: ".input-group",
                 start: "top 90%",
-                scrub:true
+                scrub: true
               },
             }
           );
@@ -144,25 +143,31 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const messageSubmissionAnimation = async (e)=>{
-    e.preventDefault()
-    if(![
-      formData.name, 
-      formData.subject,
-      formData.message,
-      formData.email,
-      formData.company
-    ]){
-      setMyMessage("All fields are required!")
+  const messageSubmissionAnimation = async (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.name ||
+      !formData.subject ||
+      !formData.message ||
+      !formData.email ||
+      !formData.company
+    ) {
+      setMyMessage("All fields are required!");
+      return;
     }
+
     try {
-      const data = await axios.post('https://backend-webli.onrender.com/send', formData)
-      console.log(data.response)
+      const data = await axios.post('https://backend-webli.onrender.com/send', formData);
+      console.log(data.response);
+      setMyMessage("Message sent successfully!");
+      // Optionally reset form:
+      // setFormData({ name: "", email: "", subject: "", message: "", company: "" });
     } catch (error) {
-      setMyMessage('Something went wrong!')
+      console.error(error);
+      setMyMessage('Something went wrong!');
     }
-    
-  }
+  };
 
   return (
     <section
@@ -173,12 +178,12 @@ export default function Contact() {
       {/* Left Side */}
       <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between">
         <div>
-          <h1 className="heading md:text-[5vw] sm:text-[10vw]">Let's collaborate</h1>
-          <p className="heading">www.webli.studio</p>
+          <h1 className="heading md:text-[5vw] sm:text-[10vw]">Let&apos;s collaborate</h1>
+          <p onClick={()=> window.open("https://webli.vercel.app", "_blank")} className="heading">webli.vercel.app</p>
         </div>
         <div className="flex flex-col gap-2 sm:hidden md:flex heading">
           <h3>Find us</h3>
-          <div className="flex gap-2 text-[2vw]">
+          <div className="flex gap-2 text-[2vw] footer-icons">
             <i className="ri-github-fill cursor-pointer text-[1.3vw]"></i>
             <i className="ri-instagram-fill cursor-pointer text-[1.3vw]"></i>
           </div>
@@ -188,7 +193,7 @@ export default function Contact() {
       {/* Right Side - Form */}
       <div className="md:w-1/2 w-full h-[60%] sm:mt-[6vh] flex flex-col md:justify-between">
         <h2 className="heading md:text-[2.4vw] sm:text-[7vw]">Say hello</h2>
-        <form action="">
+        <form>
           <div className="flex md:flex-row sm:flex-col gap-6">
             {/* Left Column */}
             <div className="md:w-1/2 w-full flex flex-col gap-4">
@@ -213,7 +218,6 @@ export default function Contact() {
                   id="company"
                   value={formData.company}
                   onChange={handleChange}
-
                 />
               </div>
 
@@ -227,7 +231,6 @@ export default function Contact() {
                   rows="4"
                   value={formData.message}
                   onChange={handleChange}
-
                 ></textarea>
               </div>
             </div>
@@ -243,7 +246,6 @@ export default function Contact() {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-
                 />
               </div>
 
@@ -256,23 +258,26 @@ export default function Contact() {
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
-
                 />
               </div>
             </div>
           </div>
 
-          <button onClick={messageSubmissionAnimation} className="border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] mt-6 cursor-pointer hover:text-green-500 transition duration-300">
+          <button
+            onClick={messageSubmissionAnimation}
+            className="border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] mt-6 cursor-pointer hover:text-green-500 transition duration-300"
+          >
             Submit <i className="ri-arrow-right-long-line"></i>
           </button>
+          <p className="text-red-400 mt-4 sm:text-[3.5vw] md:text-[1vw]">{myMessage}</p>
         </form>
       </div>
 
       {/* Footer Text */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-4 w-full justify-between md:justify-center md:w-[80%] sm:w-[90%]">
-      <div className="flex flex-col gap-2 sm:flex md:hidden heading">
+        <div className="flex flex-col gap-2 sm:flex md:hidden heading">
           <h3>Find us</h3>
-          <div className="flex gap-2 text-[4vw]">
+          <div className="flex gap-2 text-[4vw] footer-icons">
             <i className="ri-github-fill cursor-pointer text-[1.8vw]"></i>
             <i className="ri-instagram-fill cursor-pointer text-[1.8vw]"></i>
           </div>

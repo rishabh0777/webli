@@ -102,7 +102,7 @@ export default function Navbar() {
         ref={hamburgRef}
         className="fixed w-screen h-screen top-[-100vh] left-0 flex justify-center items-center bg-[#060606] z-[900]"
       >
-        <ul className="navOptions flex flex-col gap-6 sm:text-[18vw] md:text-[5vw] text-center">
+        <ul className="navOptions flex flex-col gap-6 sm:text-[11vw] md:text-[4vw] text-center">
           {["Home", "Service", "About", "Portfolio", "Contact"].map(
             (item, index) => {
               const itemKey = item.toLowerCase();

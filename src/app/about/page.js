@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from 'react';
-import OurTeam from '../../pages/ourTeam';
+import OurTeam from '../../components/ourTeam';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
@@ -14,8 +14,6 @@ export default function About() {
   const headRef = useRef(null);
   const paraRef1 = useRef(null);
   const paraRef2 = useRef(null);
-
-
 
   // Heading animation
   useGSAP(() => {
@@ -78,7 +76,7 @@ export default function About() {
         stagger: 0.02,
         scrollTrigger: {
           trigger: paraRef2.current,
-          start: 'top 50%', // slightly later trigger
+          start: 'top 50%',
           end: 'top 15%',
           scrub: true,
           toggleActions: 'play none none reverse',
@@ -88,8 +86,6 @@ export default function About() {
 
     return () => split2.revert();
   }, []);
-
-  
 
   return (
     <section id="about" className="relative w-full min-h-[100vh] py-10 px-[4vw]">
@@ -102,11 +98,11 @@ export default function About() {
 
       <section className="text-base sm:text-[3.4vw] md:text-[1.2vw] flex flex-col gap-5 mt-[6vh] text-white">
         <p ref={paraRef1}>
-          At Webli, we’re passionate about transforming ideas into interactive,
+          At Webli, we&apos;re passionate about transforming ideas into interactive,
           visually stunning, and high-performing websites. Built on creativity
           and code, our mission is to empower individuals and businesses by
           delivering modern, responsive, and engaging digital experiences.
-          Whether it’s a sleek portfolio, a dynamic e-commerce platform, or a
+          Whether it&apos;s a sleek portfolio, a dynamic e-commerce platform, or a
           fully customized web application, we approach every project with a
           focus on innovation, quality, and user satisfaction.
         </p>
@@ -116,7 +112,7 @@ export default function About() {
           basic landing pages to advanced animated websites. Our zero-investment
           agency model allows us to provide affordable solutions without
           compromising on design or functionality. At Webli, we believe great
-          websites don’t just look good—they tell a story, build trust, and
+          websites don&apos;t just look good—they tell a story, build trust, and
           drive success.
         </p>
       </section>
