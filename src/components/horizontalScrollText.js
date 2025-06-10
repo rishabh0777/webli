@@ -9,15 +9,16 @@ export default function HorizontalScrollText() {
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
-    const cards = [
+    
+
+    mm.add('(min-width: 768px)', () => {
+      const cards = [
       { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
       { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
       { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
       { id: "#card4", x: -500, y: -80, endX: -7000, rotate: -45, z: 25 },
       { id: "#card5", x: -300, y: -60, endX: -16000, rotate: 30, z: 5 },
     ];
-
-    mm.add('(min-width: 768px)', () => {
       // Pin & scroll the wrapper horizontally
       ScrollTrigger.create({
         trigger: '.wrapper',
@@ -63,6 +64,13 @@ export default function HorizontalScrollText() {
     });
 
     mm.add('(max-width: 767px)', () => {
+      const cards = [
+      { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
+      { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
+      { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
+      { id: "#card4", x: -500, y: -80, endX: -1400, rotate: -45, z: 25 },
+      { id: "#card5", x: -300, y: -60, endX: -2000, rotate: 30, z: 5 },
+    ];
       // Same logic with tweaked movement for mobile
       ScrollTrigger.create({
         trigger: '.wrapper',
