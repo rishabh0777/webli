@@ -134,9 +134,9 @@ export default function Contact() {
         </div>
         <div className="flex flex-col gap-2 sm:hidden md:flex heading opacity-100">
           <h3>Find us</h3>
-          <div className="flex gap-2 text-[2vw] footer-icons opacity-100">
-            <i className="ri-github-fill cursor-pointer text-[1.3vw]"></i>
-            <i className="ri-instagram-fill cursor-pointer text-[1.3vw]"></i>
+          <div className="flex gap-3 items-center text-[2vw] footer-icons opacity-100">
+            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
+            <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "_blank")} className="ri-linkedin-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
           </div>
         </div>
       </div>
@@ -229,11 +229,11 @@ export default function Contact() {
         <div className="flex flex-col md:gap-2 sm:flex md:hidden heading opacity-100">
           <h3>Find us</h3>
           <div className="flex gap-2 text-[4vw] footer-icons opacity-100">
-            
-            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[4vw]"></i>
+            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
+             <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "_blank")} className="ri-linkedin-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
           </div>
         </div>
-        <p className="md:text-[1vw] sm:text-[3vw] text-center">
+        <p className="md:text-[1vw] sm:text-[3.6vw] text-center">
           © {year} Webli Studio. All rights reserved.
         </p>
       </div>
