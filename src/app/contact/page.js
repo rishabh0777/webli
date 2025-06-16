@@ -33,109 +33,62 @@ export default function Contact() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       ScrollTrigger.matchMedia({
-        // Desktop
         "(min-width: 768px)": () => {
-          gsap.fromTo(
-            ".heading",
-            { opacity: 0, y: 100 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1.2,
-              ease: 'power4.out',
-              scrollTrigger: {
-                trigger: ".heading",
-                start: "top 80%",
-                scrub: true
-              },
-            }
-          );
+          gsap.from(".heading", {
+            opacity: 0,
+            y: 100,
+            duration: 1.2,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: ".heading",
+              start: "top 80%",
+              toggleActions: "play none none none",
+            },
+          });
 
-          gsap.fromTo(
-            ".input-group",
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              stagger: 0.2,
-              scrollTrigger: {
-                trigger: ".input-group",
-                start: "top 90%",
-                end: "top 60%",
-                scrub: true
-              },
-            }
-          );
+          gsap.from(".input-group", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.2,
+            scrollTrigger: {
+              trigger: ".input-group",
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
 
-          gsap.fromTo(
-            ".footer-icons",
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: ".footer-icons",
-                start: "top 95%",
-                scrub: true
-              },
-            }
-          );
+        
         },
 
-        // Mobile
         "(max-width: 767px)": () => {
-          gsap.fromTo(
-            ".heading",
-            { opacity: 0, y: 50 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: 'power2.out',
-              scrollTrigger: {
-                trigger: ".heading",
-                start: "top 85%",
-                scrub: true
-              },
-            }
-          );
+          gsap.from(".heading", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ".heading",
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
 
-          gsap.fromTo(
-            ".input-group",
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power2.out",
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: ".input-group",
-                start: "top 90%",
-                scrub: true
-              },
-            }
-          );
+          gsap.from(".input-group", {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: ".input-group",
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          });
 
-          gsap.fromTo(
-            ".footer-icons",
-            { opacity: 0, y: 30 },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: ".footer-icons",
-                start: "top 95%",
-                scrub: true
-              },
-            }
-          );
+          
         },
       });
     }, sectionRef);
@@ -161,8 +114,6 @@ export default function Contact() {
       const data = await axios.post('https://backend-webli.onrender.com/send', formData);
       console.log(data.response);
       setMyMessage("Message sent successfully!");
-      // Optionally reset form:
-      // setFormData({ name: "", email: "", subject: "", message: "", company: "" });
     } catch (error) {
       console.error(error);
       setMyMessage('Something went wrong!');
@@ -179,11 +130,11 @@ export default function Contact() {
       <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between">
         <div>
           <h1 className="heading md:text-[5vw] sm:text-[10vw]">Let&apos;s collaborate</h1>
-          <p onClick={()=> window.open("https://webli.vercel.app", "_blank")} className="heading">webli.vercel.app</p>
+          <p onClick={() => window.open("https://webli.vercel.app", "_blank")} className="heading cursor-pointer">webli.vercel.app</p>
         </div>
-        <div className="flex flex-col gap-2 sm:hidden md:flex heading">
+        <div className="flex flex-col gap-2 sm:hidden md:flex heading opacity-100">
           <h3>Find us</h3>
-          <div className="flex gap-2 text-[2vw] footer-icons">
+          <div className="flex gap-2 text-[2vw] footer-icons opacity-100">
             <i className="ri-github-fill cursor-pointer text-[1.3vw]"></i>
             <i className="ri-instagram-fill cursor-pointer text-[1.3vw]"></i>
           </div>
@@ -275,11 +226,11 @@ export default function Contact() {
 
       {/* Footer Text */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-4 w-full justify-between md:justify-center md:w-[80%] sm:w-[90%]">
-        <div className="flex flex-col gap-2 sm:flex md:hidden heading">
+        <div className="flex flex-col md:gap-2 sm:flex md:hidden heading opacity-100">
           <h3>Find us</h3>
-          <div className="flex gap-2 text-[4vw] footer-icons">
-            <i className="ri-github-fill cursor-pointer text-[1.8vw]"></i>
-            <i className="ri-instagram-fill cursor-pointer text-[1.8vw]"></i>
+          <div className="flex gap-2 text-[4vw] footer-icons opacity-100">
+            
+            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[4vw]"></i>
           </div>
         </div>
         <p className="md:text-[1vw] sm:text-[3vw] text-center">

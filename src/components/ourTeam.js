@@ -13,7 +13,7 @@ export default function OurTeam() {
   const myTeam = [
     {
       name: 'Pawan',
-      role: 'Frontend Developer',
+      role: 'Frontend Lead (Core Team)',
       img: '/images/pawan.jpeg',
       bg: 'bg-blue-200',
       myRef: member1
@@ -26,9 +26,9 @@ export default function OurTeam() {
       myRef: member2
       }, 
     {
-      name: 'Anshuman',
-      role: 'Backend Developer',
-      img: '/images/anshuman.jpeg',
+      name: 'shubam',
+      role: 'Backend Developer (Marketer)',
+      img: '/images/shubam.jpeg',
       bg: 'bg-green-200',
       myRef: member3
     }

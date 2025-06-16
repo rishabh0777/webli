@@ -1,6 +1,9 @@
 "use client";
 
 import React from "react";
+
+import 'remixicon/fonts/remixicon.css';
+
 import Hero from "./home/page.js";                    // ✅ ./home/page.js
 import Navbar from "../components/navbar";    // ✅ ../components/navbar.js
 import Service from "./service/page.js";              // ✅ ./service/page.js
