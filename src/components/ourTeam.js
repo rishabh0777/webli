@@ -26,7 +26,7 @@ export default function OurTeam() {
       myRef: member2
       }, 
     {
-      name: 'shubam',
+      name: 'shubham',
       role: 'Backend Developer (Marketer)',
       img: '/images/shubam.jpeg',
       bg: 'bg-green-200',
