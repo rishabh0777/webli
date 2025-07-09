@@ -29,7 +29,6 @@ We build custom websites in three tiers:
 - **Frontend**: React.js, Tailwind CSS, GSAP, Framer Motion  
 - **Backend**: Node.js, Express.js  
 - **Database**: MongoDB (via MongoDB Atlas)  
-- **Deployment**: Vercel / GitHub Pages / Render
 
 ## 💼 Our Team
 
@@ -39,7 +38,7 @@ A passionate team of developers dedicated to building high-quality digital produ
 |------------------|-----------------------|
 | Project Lead     | Rishabh Srivastava    |
 | Frontend Dev     | Pawan Kumar       |
-| Backend Dev      | Anshuman Singh       |
+| Backend Dev      | Shubham  Modanwal       |
 
 ## 🧩 Why Choose Us?
 
@@ -53,8 +52,8 @@ A passionate team of developers dedicated to building high-quality digital produ
 
 Have a project in mind? Let’s make it happen.
 
-📧 Email: [rishabhsrivastava7777@gmail.com](mailto:rishabhsrivastava7777@gmail.com)  
-🌐 Website: [Webli](https://rishabh0777.github.io/Webli)
+📧 Email: [webli.webagency@gmail.com](mailto:webli.webagency@gmail.com)  
+🌐 Website: [Webli](https://webli.vercel.app)
 
 ---
 
