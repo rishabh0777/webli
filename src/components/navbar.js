@@ -17,18 +17,17 @@ export default function Navbar() {
   // Entrance animation for logo & menu
   useGSAP(() => {
     const tl = gsap.timeline();
-    tl.add("a")
 tl.fromTo(
   logoRef.current,
   { x: -200, opacity: 0 },
   { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-  "a" 
+  0
 );
 tl.fromTo(
   menuBarRef.current,
   { x: 100},
   { x: 0, duration: 0.8, ease: "power3.out" },
-  "a" 
+  0
 );
 
 
