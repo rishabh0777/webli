@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -6,59 +8,62 @@ import Link from "next/link";
 export default function Navbar() {
   const [show, setShow] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+
   const hamburgRef = useRef(null);
   const logoRef = useRef(null);
   const menuBarRef = useRef(null);
+  const navLinksRef = useRef([]);
 
-  const toggleNavbar = () => {
-    if (!show) {
-      gsap.fromTo(
-        hamburgRef.current,
-        { top: "-100vh" },
-        { top: "0%", duration: 1.5, ease: "power3.inOut" }
-      );
-    } else {
-      gsap.fromTo(
-        hamburgRef.current,
-        { top: "0%" },
-        { top: "-100vh", duration: 1.5, ease: "power3.inOut" }
-      );
-    }
-    setShow(!show);
-  };
-
-  useGSAP(() => {
-    if (show) {
-      gsap.fromTo(
-        ".navOptions li",
-        { y: -30, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, delay: 0.8, ease: "power3.inOut" }
-      );
-    }
-  }, [show]);
-
+  // Entrance animation for logo & menu
   useGSAP(() => {
     const tl = gsap.timeline();
     tl.fromTo(
       logoRef.current,
       { x: -200, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: "power3.inOut" }
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
     );
     tl.fromTo(
       menuBarRef.current,
       { x: 200, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: "power3.inOut" }
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
     );
   }, []);
 
+  // Handle navbar open/close animation
+  const toggleNavbar = () => {
+    if (!show) {
+      const tl = gsap.timeline();
+      tl.to(hamburgRef.current, {
+        top: "0%",
+        duration: 1.2,
+        ease: "power3.inOut",
+      });
+      tl.fromTo(
+        navLinksRef.current,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" },
+        "-=0.6"
+      );
+    } else {
+      gsap.to(hamburgRef.current, {
+        top: "-100vh",
+        duration: 1,
+        ease: "power3.inOut",
+      });
+    }
+    setShow(!show);
+  };
+
+  // Handle nav item click scroll
   const handleItemClick = (section) => {
     toggleNavbar();
-    const targetSection = document.getElementById(section);
-    if (targetSection) {
-      targetSection.scrollIntoView({ behavior: "smooth" });
+    const target = document.getElementById(section);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
     }
   };
 
+  // Active section highlight
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -74,7 +79,6 @@ export default function Navbar() {
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
@@ -90,10 +94,10 @@ export default function Navbar() {
         />
       </section>
 
-      {/* Menu icon */}
+      {/* Hamburger Icon */}
       <i
-        onClick={toggleNavbar}
         ref={menuBarRef}
+        onClick={toggleNavbar}
         className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-3xl md:text-2xl cursor-pointer absolute right-[4vw] transition duration-700 z-[905] opacity-0`}
       ></i>
 
@@ -111,6 +115,7 @@ export default function Navbar() {
               return (
                 <li
                   key={index}
+                  ref={(el) => (navLinksRef.current[index] = el)}
                   onClick={() => handleItemClick(itemKey)}
                   className={`cursor-pointer transition-colors duration-300 ${
                     isActive ? "text-white" : "text-zinc-500"

@@ -12,7 +12,6 @@
     "@gsap/react": "^2.1.2",
     "axios": "^1.9.0",
     "boxicons": "^2.1.4",
-    "framer-motion": "^12.6.3",
     "gsap": "^3.12.7",
     "next": "^15.2.4",
     "react": "^19.0.0",

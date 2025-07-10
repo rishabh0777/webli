@@ -11,9 +11,9 @@ export default function Portfolio() {
   const projectRefs = useRef([]); // Array of refs
 
   const projects = [
-    { id: 1, name: 'Atmos', url: 'https://rishabh0777.github.io/Atmos/' },
-    { id: 2, name: 'Portfolio', url: 'https://rishabh07.netlify.app' },
-    { id: 3, name: 'SpiceSaga', url: 'https://rishabh0777.github.io/spice_saga/' },
+    { id: 1, name: 'Timeless Vogue', url: 'https://timelessvogue.vercel.app' },
+    { id: 2, name: 'Founder Portfolio', url: 'https://rishabhsrivastava.vercel.app' },
+    { id: 3, name: 'SpiceSaga', url: 'https://spicesaga.vercel.app' },
     { id: 4, name: 'Tech vista', url: 'https://rishabh0777.github.io/techvista/' },
   ];
 

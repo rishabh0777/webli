@@ -1,9 +1,32 @@
-import React, { useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-import { useGSAP } from '@gsap/react';
+"use client";
 
+import React, { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+import { useGSAP } from "@gsap/react";
+import Image from "next/image";
+
+// GSAP Plugin
 gsap.registerPlugin(ScrollTrigger);
+
+// Image Imports
+import cardReveal1 from "@/assets/images/cardReveal1.jpg";
+import cardReveal2 from "@/assets/images/cardReveal2.jpg";
+import cardReveal3 from "@/assets/images/cardReveal3.jpg";
+import cardReveal4 from "@/assets/images/cardReveal4.jpg";
+import cardReveal5 from "@/assets/images/cardReveal5.jpg";
+import cardReveal6 from "@/assets/images/cardReveal6.jpg";
+import cardReveal7 from "@/assets/images/cardReveal7.jpg";
+
+const images = [
+  cardReveal1,
+  cardReveal2,
+  cardReveal3,
+  cardReveal4,
+  cardReveal5,
+  cardReveal6,
+  cardReveal7,
+];
 
 export default function ImageReveal() {
   const container = useRef(null);
@@ -14,7 +37,7 @@ export default function ImageReveal() {
     "Creativity",
     "Transformation",
     "Futuristic",
-    "Immersive"
+    "Immersive",
   ];
 
   useGSAP(() => {
@@ -22,9 +45,7 @@ export default function ImageReveal() {
 
     mm.add(
       {
-        // Desktop
         isDesktop: "(min-width: 768px)",
-        // Mobile
         isMobile: "(max-width: 767px)",
       },
       (context) => {
@@ -32,11 +53,11 @@ export default function ImageReveal() {
 
         if (!container.current) return;
 
-        const cards = container.current.querySelectorAll('.card');
-        const images = container.current.querySelectorAll('.card img');
+        const cards = container.current.querySelectorAll(".card");
+        const images = container.current.querySelectorAll(".image-inner");
         const totalCards = cards.length;
 
-        gsap.set(cards[0], { y: '0%', scale: 1, rotate: 0 });
+        gsap.set(cards[0], { y: "0%", scale: 1, rotate: 0 });
         gsap.set(images[0], { scale: 1 });
 
         for (let i = 1; i < totalCards; i++) {
@@ -51,11 +72,11 @@ export default function ImageReveal() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: ".sticky-card",
-            start: '-30%',
+            start: "-30%",
             end: endValue,
             pin: true,
             scrub: 0.5,
-          }
+          },
         });
 
         for (let i = 0; i < totalCards - 1; i++) {
@@ -63,40 +84,55 @@ export default function ImageReveal() {
           const currentImage = images[i];
           const nextCard = cards[i + 1];
 
-          tl.to(currentCard, {
-            scale: isDesktop ? 0.5 : 0.8,
-            rotation: isDesktop ? 10 : 5,
-            duration: 1,
-            ease: 'linear',
-          }, i);
+          tl.to(
+            currentCard,
+            {
+              scale: isDesktop ? 0.5 : 0.8,
+              rotation: isDesktop ? 10 : 5,
+              duration: 1,
+              ease: "linear",
+            },
+            i
+          );
 
-          tl.to(currentImage, {
-            scale: isDesktop ? 1.5 : 1.2,
-            duration: 1,
-            ease: 'linear',
-          }, i);
+          tl.to(
+            currentImage,
+            {
+              scale: isDesktop ? 1.5 : 1.2,
+              duration: 1,
+              ease: "linear",
+            },
+            i
+          );
 
-          tl.to(nextCard, {
-            y: '0%',
-            duration: 1,
-            ease: 'linear',
-          }, i);
+          tl.to(
+            nextCard,
+            {
+              y: "0%",
+              duration: 1,
+              ease: "linear",
+            },
+            i
+          );
         }
 
         ScrollTrigger.refresh();
 
         return () => {
           tl.kill();
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
         };
       }
     );
   }, { scope: container });
 
   return (
-    <section ref={container} className="w-full left-0 relative py-3 overflow-hidden ">
-      <section className="intro relative w-full md:h-[25vh] sm:h-[40vh] lg:h-[35vh] p-3 ">
-        
+    <section
+      ref={container}
+      className="w-full left-0 relative py-3 overflow-hidden"
+    >
+      <section className="intro relative w-full md:h-[25vh] sm:h-[40vh] lg:h-[35vh] p-3">
+        {/* Optional intro heading */}
       </section>
 
       <section className="sticky-card relative w-full h-[30vh] sm:h-[40vh] md:min-h-[80vh] lg:h-[40vh] p-2 flex justify-center">
@@ -106,19 +142,26 @@ export default function ImageReveal() {
               key={index}
               className="card absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] md:w-[80vw] sm:h-full md:h-auto flex items-center justify-center rounded-lg overflow-hidden"
             >
-              <img
-                src={`/images/cardReveal${index + 1}.jpg`}
-                alt={tag}
-                className="w-full h-full object-cover"
-              />
-              <h3 className="absolute text-white text-3xl font-bold z-10">{tag}</h3>
+              <div className="relative w-full h-full image-inner">
+                <Image
+                  src={images[index]}
+                  alt={tag}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+              <h3 className="absolute text-white text-3xl font-bold z-10">
+                {tag}
+              </h3>
             </div>
           ))}
         </section>
       </section>
 
-      {/* Spacer to prevent overlapping with next section */}
+      {/* Spacer to prevent overlap with next section */}
       <div className="h-[10vh] md:h-[40vh]"></div>
     </section>
   );
 }
+

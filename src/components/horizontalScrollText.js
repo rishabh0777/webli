@@ -1,41 +1,51 @@
-import React from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
+"use client";
 
+import React from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Image from "next/image";
+
+// Register plugin
 gsap.registerPlugin(ScrollTrigger);
+
+// Import images
+import service1 from "@/assets/images/service1.jpg";
+import service2 from "@/assets/images/service2.jpg";
+import service3 from "@/assets/images/service3.jpg";
+import service4 from "@/assets/images/service4.jpg";
+import service5 from "@/assets/images/service5.jpg";
+
+const images = [service1, service2, service3, service4, service5];
 
 export default function HorizontalScrollText() {
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
-    
-
-    mm.add('(min-width: 768px)', () => {
+    mm.add("(min-width: 768px)", () => {
       const cards = [
-      { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
-      { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
-      { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
-      { id: "#card4", x: -500, y: -80, endX: -7000, rotate: -45, z: 25 },
-      { id: "#card5", x: -300, y: -60, endX: -16000, rotate: 30, z: 5 },
-    ];
-      // Pin & scroll the wrapper horizontally
+        { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
+        { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
+        { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
+        { id: "#card4", x: -500, y: -80, endX: -7000, rotate: -45, z: 25 },
+        { id: "#card5", x: -300, y: -60, endX: -16000, rotate: 30, z: 5 },
+      ];
+
       ScrollTrigger.create({
-        trigger: '.wrapper',
-        start: 'top top',
-        end: '+=950vh',
+        trigger: ".wrapper",
+        start: "top top",
+        end: "+=950vh",
         scrub: 1,
         pin: true,
         onUpdate: (self) => {
-          gsap.to('.wrapper', {
+          gsap.to(".wrapper", {
             x: `${-900 * self.progress}vw`,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
           });
         },
       });
 
-      // Animate cards independently
       cards.forEach((card) => {
         gsap.set(card.id, {
           x: card.x,
@@ -46,15 +56,15 @@ export default function HorizontalScrollText() {
 
         ScrollTrigger.create({
           trigger: card.id,
-          start: 'top top',
-          end: '+=1200vh',
+          start: "top top",
+          end: "+=1200vh",
           scrub: 1,
           onUpdate: (self) => {
             gsap.to(card.id, {
               x: card.x + card.endX * self.progress,
               rotate: `${card.rotate * self.progress}deg`,
               duration: 1,
-              ease: 'power3.out',
+              ease: "power3.out",
             });
           },
         });
@@ -63,26 +73,26 @@ export default function HorizontalScrollText() {
       ScrollTrigger.refresh();
     });
 
-    mm.add('(max-width: 767px)', () => {
+    mm.add("(max-width: 767px)", () => {
       const cards = [
-      { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
-      { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
-      { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
-      { id: "#card4", x: -500, y: -80, endX: -1400, rotate: -45, z: 25 },
-      { id: "#card5", x: -300, y: -60, endX: -2000, rotate: 30, z: 5 },
-    ];
-      // Same logic with tweaked movement for mobile
+        { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
+        { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
+        { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
+        { id: "#card4", x: -500, y: -80, endX: -1400, rotate: -45, z: 25 },
+        { id: "#card5", x: -300, y: -60, endX: -2000, rotate: 30, z: 5 },
+      ];
+
       ScrollTrigger.create({
-        trigger: '.wrapper',
-        start: 'top top',
-        end: '+=950vh',
+        trigger: ".wrapper",
+        start: "top top",
+        end: "+=950vh",
         scrub: 1,
         pin: true,
         onUpdate: (self) => {
-          gsap.to('.wrapper', {
+          gsap.to(".wrapper", {
             x: `${-950 * self.progress}vw`,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
           });
         },
       });
@@ -97,15 +107,15 @@ export default function HorizontalScrollText() {
 
         ScrollTrigger.create({
           trigger: card.id,
-          start: 'top top',
-          end: '+=1250vh',
+          start: "top top",
+          end: "+=1250vh",
           scrub: 1,
           onUpdate: (self) => {
             gsap.to(card.id, {
               x: card.x + card.endX * self.progress,
               rotate: `${card.rotate * self.progress}deg`,
               duration: 1,
-              ease: 'power3.out',
+              ease: "power3.out",
             });
           },
         });
@@ -122,17 +132,22 @@ export default function HorizontalScrollText() {
           WEBSITES THAT SPEAKS
         </h1>
 
-        {[1, 2, 3, 4, 5].map((n) => (
+        {images.map((image, i) => (
           <div
-            key={n}
-            id={`card${n}`}
+            key={i}
+            id={`card${i + 1}`}
             className="card absolute sm:w-[45vw] sm:h-[30vh] md:w-[20vw] md:h-[45vh] overflow-hidden rounded-lg"
           >
-            <img
-              src={`/images/service${n}.jpg`}
-              alt=""
-              className="w-full h-full object-cover"
-            />
+            <div className="relative w-full h-full">
+              <Image
+                src={image}
+                alt={`service${i + 1}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 45vw, 20vw"
+                priority={i === 0}
+              />
+            </div>
           </div>
         ))}
       </section>

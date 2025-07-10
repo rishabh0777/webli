@@ -11,6 +11,8 @@ export default function Contact() {
   const sectionRef = useRef(null);
   const [year, setYear] = useState(2023);
   const [myMessage, setMyMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,76 +22,41 @@ export default function Contact() {
   });
 
   const handleChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
-    const date = new Date();
-    setYear(date.getFullYear());
+    setYear(new Date().getFullYear());
   }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      ScrollTrigger.matchMedia({
-        "(min-width: 768px)": () => {
-          gsap.from(".heading", {
-            opacity: 0,
-            y: 100,
-            duration: 1.2,
-            ease: "power4.out",
-            scrollTrigger: {
-              trigger: ".heading",
-              start: "top 80%",
-              toggleActions: "play none none none",
-            },
-          });
+      // Animate heading
+      gsap.from(".heading", {
+        opacity: 0,
+        y: 70,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".heading",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
 
-          gsap.from(".input-group", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power3.out",
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: ".input-group",
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          });
-
-        
-        },
-
-        "(max-width: 767px)": () => {
-          gsap.from(".heading", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: ".heading",
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          });
-
-          gsap.from(".input-group", {
-            opacity: 0,
-            y: 30,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.15,
-            scrollTrigger: {
-              trigger: ".input-group",
-              start: "top 90%",
-              toggleActions: "play none none none",
-            },
-          });
-
-          
-        },
+      // Animate input groups
+      gsap.from('[data-gsap="input"]', {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '[data-gsap="input"]',
+          start: "top 90%",
+          toggleActions: "play none none none"
+        }
       });
     }, sectionRef);
 
@@ -98,25 +65,23 @@ export default function Contact() {
 
   const messageSubmissionAnimation = async (e) => {
     e.preventDefault();
+    const { name, email, subject, message, company } = formData;
 
-    if (
-      !formData.name ||
-      !formData.subject ||
-      !formData.message ||
-      !formData.email ||
-      !formData.company
-    ) {
+    if (!name || !email || !subject || !message || !company) {
       setMyMessage("All fields are required!");
       return;
     }
 
+    setLoading(true);
     try {
-      const data = await axios.post('https://backend-webli.onrender.com/send', formData);
-      console.log(data.response);
-      setMyMessage("Message sent successfully!");
+      await axios.post('https://backend-webli.onrender.com/send', formData);
+      setMyMessage("✅ Message sent successfully!");
+      setFormData({ name: "", email: "", subject: "", message: "", company: "" });
     } catch (error) {
+      setMyMessage("❌ Something went wrong!");
       console.error(error);
-      setMyMessage('Something went wrong!');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -124,62 +89,64 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative w-full h-screen flex sm:flex-col md:flex-row items-center px-[4vw]"
+      className="relative w-full min-h-screen flex sm:flex-col md:flex-row items-center px-[4vw] py-[6vh]"
     >
       {/* Left Side */}
-      <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between">
+      <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between mb-10 md:mb-0">
         <div>
           <h1 className="heading md:text-[5vw] sm:text-[10vw]">Let&apos;s collaborate</h1>
-          <p onClick={() => window.open("https://webli.vercel.app", "_blank")} className="heading cursor-pointer">webli.vercel.app</p>
+          <p
+            className="heading cursor-pointer underline"
+            onClick={() => window.open("https://webli.vercel.app", "_blank")}
+          >
+            webli.vercel.app
+          </p>
         </div>
-        <div className="flex flex-col gap-2 sm:hidden md:flex heading opacity-100">
+
+        {/* Social Links - Desktop Only */}
+        <div className="hidden md:flex flex-col gap-2 heading">
           <h3>Find us</h3>
-          <div className="flex gap-3 items-center text-[2vw] footer-icons opacity-100">
-            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
-            <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "_blank")} className="ri-linkedin-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
+          <div className="flex gap-3 items-center text-[2vw]">
+            <i onClick={() => window.open("https://instagram.com/webli__", "_blank")} className="ri-instagram-fill cursor-pointer"></i>
+            <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b", "_blank")} className="ri-linkedin-fill cursor-pointer"></i>
           </div>
         </div>
       </div>
 
       {/* Right Side - Form */}
-      <div className="md:w-1/2 w-full h-[60%] sm:mt-[6vh] flex flex-col md:justify-between">
+      <div className="md:w-1/2 w-full flex flex-col gap-5">
         <h2 className="heading md:text-[2.4vw] sm:text-[7vw]">Say hello</h2>
-        <form>
+        <form onSubmit={messageSubmissionAnimation}>
           <div className="flex md:flex-row sm:flex-col gap-6">
             {/* Left Column */}
             <div className="md:w-1/2 w-full flex flex-col gap-4">
-              <div className="mt-6 flex flex-col sm:gap-4 md:gap-2 input-group">
+              <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="name">Name</label>
                 <input
-                  className="w-[90%] md:w-[60%] border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="border-b border-gray-400 outline-none md:text-[1vw]"
                   type="text"
                   name="name"
-                  id="name"
                   value={formData.name}
                   onChange={handleChange}
                 />
               </div>
 
-              <div className="flex flex-col sm:gap-4 md:gap-2 input-group">
+              <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="company">Company</label>
                 <input
-                  className="w-[90%] md:w-[60%] border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="border-b border-gray-400 outline-none md:text-[1vw]"
                   type="text"
                   name="company"
-                  id="company"
                   value={formData.company}
                   onChange={handleChange}
                 />
               </div>
 
-              <div className="flex flex-col sm:gap-4 md:gap-2 input-group">
+              <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="message">Message</label>
                 <textarea
-                  className="w-[90%] md:w-[60%] border-b border-gray-400 outline-none md:text-[1vw] resize-none h-[3.5vh]"
+                  className="border-b border-gray-400 outline-none md:text-[1vw] resize-none h-[5vh]"
                   name="message"
-                  id="message"
-                  cols="30"
-                  rows="4"
                   value={formData.message}
                   onChange={handleChange}
                 ></textarea>
@@ -188,25 +155,23 @@ export default function Contact() {
 
             {/* Right Column */}
             <div className="md:w-1/2 w-full flex flex-col gap-4">
-              <div className="md:mt-6 flex flex-col sm:gap-4 md:gap-2 input-group">
+              <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="subject">Subject</label>
                 <input
-                  className="w-[90%] md:w-[60%] border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="border-b border-gray-400 outline-none md:text-[1vw]"
                   type="text"
                   name="subject"
-                  id="subject"
                   value={formData.subject}
                   onChange={handleChange}
                 />
               </div>
 
-              <div className="flex flex-col sm:gap-4 md:gap-2 input-group">
+              <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="email">Email</label>
                 <input
-                  className="w-[90%] md:w-[60%] border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="border-b border-gray-400 outline-none md:text-[1vw]"
                   type="email"
                   name="email"
-                  id="email"
                   value={formData.email}
                   onChange={handleChange}
                 />
@@ -215,25 +180,26 @@ export default function Contact() {
           </div>
 
           <button
-            onClick={messageSubmissionAnimation}
-            className="border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] mt-6 cursor-pointer hover:text-green-500 transition duration-300"
+            type="submit"
+            disabled={loading}
+            className={`mt-6 border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] hover:text-green-500 transition duration-300 ${
+              loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           >
-            Submit <i className="ri-arrow-right-long-line"></i>
+            {loading ? "Sending..." : "Submit"} <i className="ri-arrow-right-line"></i>
           </button>
+
           <p className="text-red-400 mt-4 sm:text-[3.5vw] md:text-[1vw]">{myMessage}</p>
         </form>
       </div>
 
-      {/* Footer Text */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-4 w-full justify-between md:justify-center md:w-[80%] sm:w-[90%]">
-        <div className="flex flex-col md:gap-2 sm:flex md:hidden heading opacity-100">
-          <h3>Find us</h3>
-          <div className="flex gap-2 text-[4vw] footer-icons opacity-100">
-            <i onClick={() => window.open("https://instagram.com/webli__/profilecard/?igsh=cjYzbzE5b242bXZx", "_blank")} className="ri-instagram-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
-             <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "_blank")} className="ri-linkedin-fill cursor-pointer md:text-[1.8vw] sm:text-[5vw]"></i>
-          </div>
+      {/* Footer (Mobile Socials) */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full flex flex-col items-center sm:gap-4 md:gap-0 md:flex-row md:justify-center">
+        <div className="flex md:hidden gap-3 items-center">
+          <i onClick={() => window.open("https://instagram.com/webli__", "_blank")} className="ri-instagram-fill text-[5vw] cursor-pointer"></i>
+          <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b", "_blank")} className="ri-linkedin-fill text-[5vw] cursor-pointer"></i>
         </div>
-        <p className="md:text-[1vw] sm:text-[3.6vw] text-center">
+        <p className="text-center sm:text-[3.6vw] md:text-[1vw] mt-2">
           © {year} Webli Studio. All rights reserved.
         </p>
       </div>

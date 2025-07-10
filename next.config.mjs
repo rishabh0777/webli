@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   experimental: {
-    allowedDevOrigins: [
-      "http://192.168.31.154:3000",
-      "http://localhost:3000",
-      "https://ztj82y-3000.csb.app/",
-    ],
-    output: "export",
-  },
+    serverActions: {} // ✅ empty object or just remove if not using
+  }
 };
 
 export default nextConfig;
