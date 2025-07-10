@@ -104,7 +104,15 @@ export default function Navbar() {
 
       {/* Hamburger + Pricing */}
       <section className="w-[30vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
-        <button className="px-4 py-2 bg-red-500 text-white sm:text-[1.4vw] md:text-[0.9vw] rounded-md">
+        <button onClick={()=>{
+          const link = document.createElement("a");
+          link.href = "/webliPricing&Services.pdf";
+          link.download = "webliPriceng&Services";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }}
+         className="px-4 py-2 bg-red-500 text-white sm:text-[2vw] md:text-[0.9vw] rounded-md">
           Pricing
         </button>
         <i
