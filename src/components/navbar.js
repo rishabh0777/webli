@@ -25,8 +25,8 @@ tl.fromTo(
 );
 tl.fromTo(
   menuBarRef.current,
-  { x: 100, opacity: 0 },
-  { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+  { x: 100},
+  { x: 0, duration: 0.8, ease: "power3.out" },
   0 // also start at time 0
 );
 
@@ -100,7 +100,7 @@ tl.fromTo(
       <i
         ref={menuBarRef}
         onClick={toggleNavbar}
-        className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer absolute right-[4vw] transition duration-700 z-[905] opacity-0`}
+        className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer absolute right-[4vw] transition duration-700 z-[905]`}
       ></i>
 
       {/* Full-screen Hamburger Menu */}
