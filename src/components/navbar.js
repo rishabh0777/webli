@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import Link from "next/link";
 
 export default function Navbar() {
   const [show, setShow] = useState(false);
@@ -12,9 +11,10 @@ export default function Navbar() {
   const hamburgRef = useRef(null);
   const logoRef = useRef(null);
   const menuBarRef = useRef(null);
+  const buttonRef = useRef(null);
   const navLinksRef = useRef([]);
 
-  // Entrance animation for logo & menu icon
+  // Entrance animation for logo, button & menu icon
   useGSAP(() => {
     const tl = gsap.timeline();
     tl.fromTo(
@@ -24,9 +24,9 @@ export default function Navbar() {
       0
     );
     tl.fromTo(
-      menuBarRef.current,
+      [buttonRef.current, menuBarRef.current],
       { x: 100, opacity: 0 },
-      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.1 },
       0
     );
   }, []);
@@ -62,7 +62,7 @@ export default function Navbar() {
     setShow(!show);
   };
 
-  // Smooth scroll to section
+  // Scroll to section on click
   const handleItemClick = (section) => {
     toggleNavbar();
     const target = document.getElementById(section);
@@ -71,7 +71,7 @@ export default function Navbar() {
     }
   };
 
-  // Set active section on scroll
+  // Active nav link tracking
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -91,9 +91,9 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar fixed w-screen top-0 sm:h-[10vh] md:h-[8vh] px-[4vw] flex justify-between items-center bg-transparent text-white z-[1000]">
+    <nav className="fixed w-screen top-0 sm:h-[10vh] md:h-[8vh] px-[4vw] flex justify-between items-center bg-transparent text-white z-[1000]">
       {/* Logo */}
-      <section className="sm:w-[13vw] md:w-[4vw] absolute z-[905]">
+      <section className="sm:w-[20vw] md:w-[5vw] absolute z-[905]">
         <img
           ref={logoRef}
           src="/logo/TransparentWhite.png"
@@ -102,32 +102,35 @@ export default function Navbar() {
         />
       </section>
 
-      {/* Hamburger + Pricing */}
-      <section className="w-[30vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
-        <button onClick={()=>{
-          const link = document.createElement("a");
-          link.href = "/webliPricing&Services.pdf";
-          link.download = "webliPriceng&Services";
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        }}
-         className="px-4 py-2 bg-red-500 text-white sm:text-[2vw] md:text-[0.9vw] rounded-md">
+      {/* Pricing + Menu Icon */}
+      <section className="w-[45vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
+        <button
+          ref={buttonRef}
+          onClick={() => {
+            const link = document.createElement("a");
+            link.href = "/webliPricing&Services.pdf";
+            link.download = "webliPricing&Services";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+          className="px-4 py-2 bg-white text-black sm:text-[3.5vw] md:text-[1.2vw] rounded-md hover:bg-red-400 hover:text-white transition-all duration-300"
+        >
           Pricing
         </button>
         <i
           ref={menuBarRef}
           onClick={toggleNavbar}
-          className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer transition duration-700 z-[905]`}
+          className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-[7vw] md:text-[1.5vw] cursor-pointer transition duration-700 z-[905]`}
         ></i>
       </section>
 
-      {/* Full-screen nav menu */}
+      {/* Full-screen Nav */}
       <section
         ref={hamburgRef}
         className="fixed w-screen h-screen top-[-100vh] left-0 flex justify-center items-center bg-[#060606] z-[900]"
       >
-        <ul className="navOptions flex flex-col gap-6 sm:text-[11vw] md:text-[4vw] text-center">
+        <ul className="flex flex-col gap-6 sm:text-[11vw] md:text-[4vw] text-center">
           {["Home", "Service", "About", "Portfolio", "Contact"].map(
             (item, index) => {
               const itemKey = item.toLowerCase();
