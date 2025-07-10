@@ -17,17 +17,18 @@ export default function Navbar() {
   // Entrance animation for logo & menu
   useGSAP(() => {
     const tl = gsap.timeline();
+    tl.add("a")
 tl.fromTo(
   logoRef.current,
   { x: -200, opacity: 0 },
   { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-  0 // start at time 0
+  "a" // start at time 0
 );
 tl.fromTo(
   menuBarRef.current,
   { x: 100},
   { x: 0, duration: 0.8, ease: "power3.out" },
-  0 // also start at time 0
+  "a" // also start at time 0
 );
 
 
@@ -97,11 +98,14 @@ tl.fromTo(
       </section>
 
       {/* Hamburger Icon */}
-      <i
+      <section className="w-[30vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
+      <button className="px-4 py-2 bg-red-500 text-white sm:text-[1.4vw] md:text-[0.9vw] rounded-md">Pricing</button>
+        <i
         ref={menuBarRef}
         onClick={toggleNavbar}
-        className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer absolute right-[4vw] transition duration-700 z-[905]`}
+        className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer transition duration-700 z-[905]`}
       ></i>
+      </section>
 
       {/* Full-screen Hamburger Menu */}
       <section
