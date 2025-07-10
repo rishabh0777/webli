@@ -14,24 +14,24 @@ export default function Navbar() {
   const menuBarRef = useRef(null);
   const navLinksRef = useRef([]);
 
-  // Entrance animation for logo & menu
+  // Entrance animation for logo & menu icon
   useGSAP(() => {
     const tl = gsap.timeline();
-tl.fromTo(
-  logoRef.current,
-  { x: -200, opacity: 0 },
-  { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-  0
-);
-tl.fromTo(
-  menuBarRef.current,
-  { x: 100},
-  { x: 0, duration: 0.8, ease: "power3.out" },
-  0
-);
+    tl.fromTo(
+      logoRef.current,
+      { x: -200, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+      0
+    );
+    tl.fromTo(
+      menuBarRef.current,
+      { x: 100, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+      0
+    );
+  }, []);
 
-
-  // Handle navbar open/close animation
+  // Toggle hamburger menu animation
   const toggleNavbar = () => {
     if (!show) {
       const tl = gsap.timeline();
@@ -43,7 +43,13 @@ tl.fromTo(
       tl.fromTo(
         navLinksRef.current,
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out" },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
         "-=0.6"
       );
     } else {
@@ -56,7 +62,7 @@ tl.fromTo(
     setShow(!show);
   };
 
-  // Handle nav item click scroll
+  // Smooth scroll to section
   const handleItemClick = (section) => {
     toggleNavbar();
     const target = document.getElementById(section);
@@ -65,7 +71,7 @@ tl.fromTo(
     }
   };
 
-  // Active section highlight
+  // Set active section on scroll
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -96,17 +102,19 @@ tl.fromTo(
         />
       </section>
 
-      {/* Hamburger Icon */}
+      {/* Hamburger + Pricing */}
       <section className="w-[30vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
-      <button className="px-4 py-2 bg-red-500 text-white sm:text-[1.4vw] md:text-[0.9vw] rounded-md">Pricing</button>
+        <button className="px-4 py-2 bg-red-500 text-white sm:text-[1.4vw] md:text-[0.9vw] rounded-md">
+          Pricing
+        </button>
         <i
-        ref={menuBarRef}
-        onClick={toggleNavbar}
-        className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer transition duration-700 z-[905]`}
-      ></i>
+          ref={menuBarRef}
+          onClick={toggleNavbar}
+          className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-2xl md:text-2xl cursor-pointer transition duration-700 z-[905]`}
+        ></i>
       </section>
 
-      {/* Full-screen Hamburger Menu */}
+      {/* Full-screen nav menu */}
       <section
         ref={hamburgRef}
         className="fixed w-screen h-screen top-[-100vh] left-0 flex justify-center items-center bg-[#060606] z-[900]"
