@@ -59,7 +59,7 @@ export default function Portfolio() {
             ref={(el) => (projectRefs.current[index] = el)}
             className='w-full flex justify-between items-center border-b border-gray-600 pb-2 mt-6 transition-all duration-500'
           >
-            <h2 className='sm:text-[10vw] md:text-[3.5vw]'>{project.name}</h2>
+            <h2 className='sm:text-[7.8vw] md:text-[3.5vw]'>{project.name}</h2>
             <i
               onClick={() => redirectURL(project.url)}
               className='bx bx-right-arrow-alt sm:text-[8vw] md:text-[5vw] -rotate-45 cursor-pointer'

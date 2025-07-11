@@ -6,10 +6,10 @@ import { ScrollTrigger } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
-// GSAP Plugin
+// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Image Imports
+// Image imports
 import cardReveal1 from "@/assets/images/cardReveal1.jpg";
 import cardReveal2 from "@/assets/images/cardReveal2.jpg";
 import cardReveal3 from "@/assets/images/cardReveal3.jpg";
@@ -18,6 +18,7 @@ import cardReveal5 from "@/assets/images/cardReveal5.jpg";
 import cardReveal6 from "@/assets/images/cardReveal6.jpg";
 import cardReveal7 from "@/assets/images/cardReveal7.jpg";
 
+// Image array
 const images = [
   cardReveal1,
   cardReveal2,
@@ -29,7 +30,9 @@ const images = [
 ];
 
 export default function ImageReveal() {
+  const isProduction = process.env.NEXT_PUBLIC_IS_PRODUCTION === "true";
   const container = useRef(null);
+
   const tags = [
     "Innovation",
     "Motion",
@@ -57,6 +60,7 @@ export default function ImageReveal() {
         const images = container.current.querySelectorAll(".image-inner");
         const totalCards = cards.length;
 
+        // Initial states
         gsap.set(cards[0], { y: "0%", scale: 1, rotate: 0 });
         gsap.set(images[0], { scale: 1 });
 
@@ -127,12 +131,9 @@ export default function ImageReveal() {
   }, { scope: container });
 
   return (
-    <section
-      ref={container}
-      className="w-full left-0 relative py-3 overflow-hidden"
-    >
+    <section ref={container} className="w-full left-0 relative py-3 overflow-hidden">
       <section className="intro relative w-full md:h-[25vh] sm:h-[40vh] lg:h-[35vh] p-3">
-        {/* Optional intro heading */}
+        {/* Optional intro content */}
       </section>
 
       <section className="sticky-card relative w-full h-[30vh] sm:h-[40vh] md:min-h-[80vh] lg:h-[40vh] p-2 flex justify-center">
@@ -143,13 +144,21 @@ export default function ImageReveal() {
               className="card absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] md:w-[80vw] sm:h-full md:h-[80vh] flex items-center justify-center rounded-lg overflow-hidden"
             >
               <div className="relative w-full h-full image-inner">
-                <Image
-                  src={images[index]}
-                  alt={tag}
-                  fill
-                  className="object-cover"
-                  priority={index === 0}
-                />
+                {isProduction ? (
+                  <Image
+                    src={images[index]}
+                    alt={tag}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                  />
+                ) : (
+                  <img
+                    src={images[index].src}
+                    alt={tag}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
               <h3 className="absolute text-white text-3xl font-bold z-10">
                 {tag}
@@ -159,9 +168,8 @@ export default function ImageReveal() {
         </section>
       </section>
 
-      {/* Spacer to prevent overlap with next section */}
+      {/* Spacer to prevent overlap */}
       <div className="h-[10vh] md:h-[40vh]"></div>
     </section>
   );
 }
-

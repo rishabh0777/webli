@@ -19,6 +19,8 @@ import service5 from "@/assets/images/service5.jpg";
 const images = [service1, service2, service3, service4, service5];
 
 export default function HorizontalScrollText() {
+  const isProduction = process.env.NEXT_PUBLIC_IS_PRODUCTION === "true";
+
   useGSAP(() => {
     const mm = gsap.matchMedia();
 
@@ -139,14 +141,22 @@ export default function HorizontalScrollText() {
             className="card absolute sm:w-[45vw] sm:h-[30vh] md:w-[20vw] md:h-[45vh] overflow-hidden rounded-lg"
           >
             <div className="relative w-full h-full">
-              <Image
-                src={image}
-                alt={`service${i + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 45vw, 20vw"
-                priority={i === 0}
-              />
+              {isProduction ? (
+                <Image
+                  src={image}
+                  alt={`service${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 45vw, 20vw"
+                  priority={i === 0}
+                />
+              ) : (
+                <img
+                  src={image?.src || image}
+                  alt={`service${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              )}
             </div>
           </div>
         ))}

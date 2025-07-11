@@ -32,7 +32,6 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate heading
       gsap.from(".heading", {
         opacity: 0,
         y: 70,
@@ -45,7 +44,6 @@ export default function Contact() {
         }
       });
 
-      // Animate input groups
       gsap.from('[data-gsap="input"]', {
         opacity: 0,
         y: 40,
@@ -179,27 +177,45 @@ export default function Contact() {
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className={`mt-6 border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] hover:text-green-500 transition duration-300 ${
-              loading ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
-          >
-            {loading ? "Sending..." : "Submit"} <i className="ri-arrow-right-line"></i>
-          </button>
+          {/* Submit & Mobile Social */}
+          <div className="flex justify-between items-center mt-6">
+            {/* Mobile Icons */}
+            <div className="flex gap-3 items-center md:hidden">
+              <i
+                onClick={() => window.open("https://instagram.com/webli__", "_blank")}
+                className="ri-instagram-fill text-[6vw] cursor-pointer"
+              ></i>
+              <i
+                onClick={() =>
+                  window.open(
+                    "https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b",
+                    "_blank"
+                  )
+                }
+                className="ri-linkedin-fill text-[6vw] cursor-pointer"
+              ></i>
+            </div>
 
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`border-b border-gray-400 sm:text-[4.5vw] md:text-[1vw] hover:text-green-500 transition duration-300 ${
+                loading ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              {loading ? "Sending..." : "Submit"} <i className="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
+          {/* Message */}
           <p className="text-red-400 mt-4 sm:text-[3.5vw] md:text-[1vw]">{myMessage}</p>
         </form>
       </div>
 
-      {/* Footer (Mobile Socials) */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full flex flex-col items-center sm:gap-4 md:gap-0 md:flex-row md:justify-center">
-        <div className="flex md:hidden gap-3 items-center">
-          <i onClick={() => window.open("https://instagram.com/webli__", "_blank")} className="ri-instagram-fill text-[5vw] cursor-pointer"></i>
-          <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b", "_blank")} className="ri-linkedin-fill text-[5vw] cursor-pointer"></i>
-        </div>
-        <p className="text-center sm:text-[3.6vw] md:text-[1vw] mt-2">
+      {/* Footer Year */}
+      <div className="w-full absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center mt-6">
+        <p className="text-center sm:text-[3.6vw] md:text-[1vw]">
           © {year} Webli Studio. All rights reserved.
         </p>
       </div>

@@ -9,6 +9,31 @@ export default function Hero() {
   const arrowRef = useRef(null);
 
   useEffect(() => {
+    const flagEntrance = (chars, delayStart = 0) => {
+      const tl = gsap.timeline({ delay: delayStart });
+
+      tl.fromTo(
+        chars,
+        {
+          y: () => gsap.utils.random(-100, 100),
+          x: () => gsap.utils.random(-100, 100),
+          opacity: 0,
+          rotate: () => gsap.utils.random(-90, 90),
+        },
+        {
+          y: 0,
+          x: 0,
+          opacity: 1,
+          rotate: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.04,
+        }
+      );
+
+      tl.add(() => waveAnimation(chars), "-=0.2");
+    };
+
     const waveAnimation = (chars) => {
       chars.forEach((char, i) => {
         gsap.to(char, {
@@ -20,23 +45,35 @@ export default function Hero() {
           repeat: -1,
           yoyo: true,
           delay: i * 0.05,
+          opacity: 1, // Ensure characters stay visible
         });
       });
     };
 
-    waveAnimation(topTextRef.current);
-    waveAnimation(bottomTextRef.current);
+    flagEntrance(topTextRef.current, 0);         // Animate top line
+    flagEntrance(bottomTextRef.current, 0.4);    // Animate bottom line
 
-    // Bouncing arrow
-    if (arrowRef.current) {
-      gsap.to(arrowRef.current, {
-        y: 15,
-        repeat: -1,
-        yoyo: true,
+    // Arrow entrance animation
+    gsap.fromTo(
+      arrowRef.current,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 0.7,
+        delay: 1.5,
         duration: 1,
-        ease: "power1.inOut",
-      });
-    }
+        ease: "power3.out",
+      }
+    );
+
+    // Arrow bounce loop
+    gsap.to(arrowRef.current, {
+      y: -10,
+      repeat: -1,
+      yoyo: true,
+      duration: 1.2,
+      ease: "power1.inOut",
+    });
   }, []);
 
   const renderText = (text, refArray) =>
@@ -44,7 +81,7 @@ export default function Hero() {
       <span
         key={i}
         ref={(el) => (refArray.current[i] = el)}
-        className="inline-block"
+        className="inline-block opacity-0"
       >
         {char === " " ? "\u00A0" : char}
       </span>
@@ -64,9 +101,9 @@ export default function Hero() {
         </h1>
       </div>
 
-      {/* Remix Icon Scroll Indicator */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 text-white text-3xl">
-        <i ref={arrowRef} className="ri-arrow-down-line opacity-70" />
+      {/* Scroll Down Arrow */}
+      <div ref={arrowRef} className="absolute bottom-5 opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl">
+        <i className="ri-arrow-down-line opacity-70" />
       </div>
     </section>
   );
