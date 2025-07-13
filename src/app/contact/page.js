@@ -4,13 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
+  
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const sectionRef = useRef(null);
   const [year, setYear] = useState(2023);
-  const [myMessage, setMyMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -66,18 +67,17 @@ export default function Contact() {
     const { name, email, subject, message, company } = formData;
 
     if (!name || !email || !subject || !message || !company) {
-      setMyMessage("All fields are required!");
-      return;
+       toast.error("All fields are required!");
+  return;
     }
 
     setLoading(true);
     try {
       await axios.post('https://backend-webli.onrender.com/send', formData);
-      setMyMessage("✅ Message sent successfully!");
+      toast.success("✅ Message sent successfully!");
       setFormData({ name: "", email: "", subject: "", message: "", company: "" });
     } catch (error) {
-      setMyMessage("❌ Something went wrong!");
-      console.error(error);
+      toast.error("❌ Something went wrong!");
     } finally {
       setLoading(false);
     }
@@ -208,8 +208,6 @@ export default function Contact() {
             </button>
           </div>
 
-          {/* Message */}
-          <p className="text-red-400 mt-4 sm:text-[3.5vw] md:text-[1vw]">{myMessage}</p>
         </form>
       </div>
 
