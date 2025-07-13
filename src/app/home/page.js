@@ -102,7 +102,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Down Arrow */}
-      <div ref={arrowRef} className="absolute bottom-5 opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl">
+      <div ref={arrowRef} className="absolute bottom-[10vh] opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl">
         <i className="ri-arrow-down-line opacity-70" />
       </div>
     </section>
