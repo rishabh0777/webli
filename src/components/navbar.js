@@ -18,29 +18,12 @@ export default function Navbar() {
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
     tl.add("a")
-    tl.fromTo(
-      logoRef.current,
-      {opacity: 0},
-      {opacity: 1, duration: 0.6 },
-      "a"
-    );
-
-    tl.fromTo(
-      menuBarRef.current,
-      { scale: 0.5, opacity: 0, rotate: -90 },
-      { scale: 1, rotate: 0, opacity: 1, duration: 0.6 },
-      "a"
-    );
-
-    tl.fromTo(
-      buttonRef.current,
-      { opacity: 0},
-      { opacity: 1, duration: 0.6 },
-      "+=0.3"
-    );
+      .fromTo(logoRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 }, "a")
+      .fromTo(menuBarRef.current, { scale: 0.5, opacity: 0, rotate: -90 }, { scale: 1, rotate: 0, opacity: 1, duration: 0.6 }, "a")
+      .fromTo(buttonRef.current, { opacity: 0 }, { opacity: 1, duration: 0.6 }, "+=0.3");
   }, []);
 
-  // Menu toggle
+  // Toggle menu
   const toggleNavbar = () => {
     const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
 
@@ -76,6 +59,7 @@ export default function Navbar() {
     setShow(!show);
   };
 
+  // Scroll to section when nav item clicked
   const handleItemClick = (section) => {
     toggleNavbar();
     const target = document.getElementById(section);
@@ -84,6 +68,7 @@ export default function Navbar() {
     }
   };
 
+  // Detect section on scroll and update title + URL hash
   useEffect(() => {
     const sections = document.querySelectorAll("section");
 
@@ -91,7 +76,17 @@ export default function Navbar() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            const id = entry.target.id;
+            if (id) {
+              setActiveSection(id);
+
+              // ✅ Update URL without reload
+              window.history.replaceState(null, "", `#${id}`);
+
+              // ✅ Update title
+              const capitalized = id.charAt(0).toUpperCase() + id.slice(1);
+              document.title = `Webli | ${capitalized}`;
+            }
           }
         });
       },
@@ -143,24 +138,22 @@ export default function Navbar() {
         className="fixed w-screen h-screen top-[-100vh] left-0 flex justify-center items-center bg-[#060606] z-[900]"
       >
         <ul className="flex flex-col gap-6 sm:text-[11vw] md:text-[4vw] text-center">
-          {["Home", "Service", "About", "Portfolio", "Contact"].map(
-            (item, index) => {
-              const key = item.toLowerCase();
-              const isActive = key === activeSection;
-              return (
-                <li
-                  key={key}
-                  ref={(el) => (navLinksRef.current[index] = el)}
-                  onClick={() => handleItemClick(key)}
-                  className={`cursor-pointer transition-colors duration-300 ${
-                    isActive ? "text-white" : "text-zinc-500"
-                  } hover:text-white`}
-                >
-                  {item}
-                </li>
-              );
-            }
-          )}
+          {["Home", "Service", "About", "Portfolio", "Contact"].map((item, index) => {
+            const key = item.toLowerCase();
+            const isActive = key === activeSection;
+            return (
+              <li
+                key={key}
+                ref={(el) => (navLinksRef.current[index] = el)}
+                onClick={() => handleItemClick(key)}
+                className={`cursor-pointer transition-colors duration-300 ${
+                  isActive ? "text-white" : "text-zinc-500"
+                } hover:text-white`}
+              >
+                {item}
+              </li>
+            );
+          })}
         </ul>
       </section>
     </nav>

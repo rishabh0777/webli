@@ -3,6 +3,9 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+
+
+
 export default function Hero() {
   const topTextRef = useRef([]);
   const bottomTextRef = useRef([]);

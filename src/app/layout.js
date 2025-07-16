@@ -2,11 +2,14 @@ import "boxicons/css/boxicons.min.css";
 import "./globals.css";
 import { Toaster } from 'react-hot-toast';
 
+
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-      {children}
+      <main>{children}</main>
       <Toaster
           position="top-right"
           toastOptions={{
