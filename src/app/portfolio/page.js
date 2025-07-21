@@ -14,7 +14,6 @@ export default function Portfolio() {
     { id: 1, name: 'Timeless Vogue', url: 'https://timelessvogue.vercel.app' },
     { id: 2, name: 'Founder Portfolio', url: 'https://rishabhsrivastava.vercel.app' },
     { id: 3, name: 'SpiceSaga', url: 'https://spicesaga.vercel.app' },
-    { id: 4, name: 'Tech vista', url: 'https://rishabh0777.github.io/techvista/' },
   ];
 
   const redirectURL = (url) => {
