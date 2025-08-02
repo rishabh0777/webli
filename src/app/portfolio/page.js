@@ -11,9 +11,10 @@ export default function Portfolio() {
   const projectRefs = useRef([]); // Array of refs
 
   const projects = [
-    { id: 1, name: 'Timeless Vogue', url: 'https://timelessvogue.vercel.app' },
+    {id: 1, name: "Lion's Den Cafe", url: 'https://lionsdencafe.vercel.app'},
     { id: 2, name: 'Founder Portfolio', url: 'https://rishabhsrivastava.vercel.app' },
-    { id: 3, name: 'SpiceSaga', url: 'https://spicesaga.vercel.app' },
+    { id: 3, name: 'Timeless Vogue', url: 'https://timelessvogue.vercel.app' },
+    { id: 4, name: 'SpiceSaga', url: 'https://spicesaga.vercel.app' },
   ];
 
   const redirectURL = (url) => {
