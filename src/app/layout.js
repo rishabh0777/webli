@@ -8,6 +8,9 @@ import { Toaster } from 'react-hot-toast';
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="JtjC0Spp1E4E7qkWm6b3CI6fpyxqbM4CT1FXrAwLR28" />
+      </head>
       <body>
       <main>{children}</main>
       <Toaster
