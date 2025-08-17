@@ -2,7 +2,7 @@
 export const metadata = {
   title: "Webli - We Build, You Launch 🚀",
   description: "Webli is a web development agency building modern, animated, and fast websites for startups and small businesses.",
-  keywords: ["Webli", "Webli Studio", "Web Development Agency", "Animated Websites", "Startup Websites", "Freelance Web Development"],
+  keywords: ["Webli", "Webli Studio", "Web Development Agency", "Animated Websites", "Startup Websites", "Freelance Web Development", "webli", "web dev agency", "website maker", "webli web development agency", "webli studio", "webli creative studio", "creative studio"],
   openGraph: {
     title: "Webli - We Build, You Launch 🚀",
     description: "Get your startup online with stunning, animated, fast websites. Built by Webli.",

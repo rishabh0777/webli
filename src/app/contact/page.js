@@ -5,7 +5,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-  
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,8 +66,8 @@ export default function Contact() {
     const { name, email, subject, message, company } = formData;
 
     if (!name || !email || !subject || !message || !company) {
-       toast.error("All fields are required!");
-  return;
+      toast.error("All fields are required!");
+      return;
     }
 
     setLoading(true);
@@ -87,12 +86,13 @@ export default function Contact() {
     <section
       ref={sectionRef}
       id="contact"
-      className="relative w-full min-h-screen flex sm:flex-col md:flex-row items-center px-[4vw] py-[6vh]"
+      className="relative w-full min-h-screen flex sm:flex-col md:flex-row items-center px-[4vw] py-[6vh]
+                 bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white"
     >
       {/* Left Side */}
       <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between mb-10 md:mb-0">
         <div>
-          <h1 className="heading md:text-[5vw] sm:text-[10vw]">Let&apos;s collaborate</h1>
+          <h1 className="heading md:text-[5vw] sm:text-[10vw] font-bold">Let&apos;s collaborate</h1>
           <p
             className="heading cursor-pointer underline"
             onClick={() => window.open("https://webli.vercel.app", "_blank")}
@@ -121,7 +121,7 @@ export default function Contact() {
               <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="name">Name</label>
                 <input
-                  className="border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="bg-transparent border-b border-gray-400 outline-none md:text-[1vw] text-white"
                   type="text"
                   name="name"
                   value={formData.name}
@@ -132,7 +132,7 @@ export default function Contact() {
               <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="company">Company</label>
                 <input
-                  className="border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="bg-transparent border-b border-gray-400 outline-none md:text-[1vw] text-white"
                   type="text"
                   name="company"
                   value={formData.company}
@@ -143,7 +143,7 @@ export default function Contact() {
               <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="message">Message</label>
                 <textarea
-                  className="border-b border-gray-400 outline-none md:text-[1vw] resize-none h-[5vh]"
+                  className="bg-transparent border-b border-gray-400 outline-none md:text-[1vw] text-white resize-none h-[5vh]"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
@@ -156,7 +156,7 @@ export default function Contact() {
               <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="subject">Subject</label>
                 <input
-                  className="border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="bg-transparent border-b border-gray-400 outline-none md:text-[1vw] text-white"
                   type="text"
                   name="subject"
                   value={formData.subject}
@@ -167,7 +167,7 @@ export default function Contact() {
               <div data-gsap="input" className="flex flex-col gap-2">
                 <label htmlFor="email">Email</label>
                 <input
-                  className="border-b border-gray-400 outline-none md:text-[1vw]"
+                  className="bg-transparent border-b border-gray-400 outline-none md:text-[1vw] text-white"
                   type="email"
                   name="email"
                   value={formData.email}
@@ -207,7 +207,6 @@ export default function Contact() {
               {loading ? "Sending..." : "Submit"} <i className="ri-arrow-right-line"></i>
             </button>
           </div>
-
         </form>
       </div>
 

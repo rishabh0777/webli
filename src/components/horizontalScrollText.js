@@ -25,13 +25,14 @@ export default function HorizontalScrollText() {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 768px)", () => {
-      const cards = [
-        { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
-        { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
-        { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
-        { id: "#card4", x: -500, y: -80, endX: -7000, rotate: -45, z: 25 },
-        { id: "#card5", x: -300, y: -60, endX: -16000, rotate: 30, z: 5 },
-      ];
+     const cards = [
+  { id: "#card1", x: -200, y: -50, endX: -3000, rotate: 28, z: 10 },  
+  { id: "#card2", x: 300,  y: -150, endX: -3500, rotate: -15, z: 20 }, 
+  { id: "#card3", x: 600,  y: -80, endX: -13000, rotate: 25, z: 15 },   
+  { id: "#card4", x: 1400, y: -200, endX: -15000, rotate: -25, z: 25 }, 
+  { id: "#card5", x: 600, y: -100, endX: -23000, rotate: 30, z: 5 },   
+];
+
 
       ScrollTrigger.create({
         trigger: ".wrapper",
@@ -76,7 +77,7 @@ export default function HorizontalScrollText() {
     });
 
     mm.add("(max-width: 767px)", () => {
-      const cards = [
+       const cards = [
         { id: "#card1", x: 0, y: -100, endX: -2000, rotate: 45, z: 10 },
         { id: "#card2", x: 500, y: -10, endX: -3000, rotate: -35, z: 20 },
         { id: "#card3", x: 800, y: -120, endX: -6000, rotate: -45, z: 15 },
@@ -88,7 +89,7 @@ export default function HorizontalScrollText() {
         trigger: ".wrapper",
         start: "top top",
         end: "+=950vh",
-        scrub: 1,
+        scrub: 2,
         pin: true,
         onUpdate: (self) => {
           gsap.to(".wrapper", {
@@ -128,9 +129,12 @@ export default function HorizontalScrollText() {
   });
 
   return (
-    <section className="relative w-full sm:h-[250vh] md:h-[300vh] overflow-hidden">
-      <section className="wrapper relative w-[1200vw] sm:h-[80vh] md:h-screen will-change-transform sm:p-[10em] md:p-[5em]">
-        <h1 className="sm:text-[48vw] md:text-[20vw] font-black whitespace-nowrap text-center">
+    <section
+      className="relative w-full sm:h-[250vh] md:h-[190vh] overflow-hidden 
+                 bg-gradient-to-b from-gray-900 via-black to-gray-900"
+    >
+      <section className="wrapper relative w-[900vw] sm:h-[80vh] md:h-screen will-change-transform sm:p-[10em] md:p-[5em]">
+        <h1 className="sm:text-[52vw] h-0 md:text-[22vw] font-black whitespace-nowrap text-center text-white">
           WEBSITES THAT SPEAKS
         </h1>
 

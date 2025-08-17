@@ -18,7 +18,6 @@ import cardReveal5 from "@/assets/images/cardReveal5.jpg";
 import cardReveal6 from "@/assets/images/cardReveal6.jpg";
 import cardReveal7 from "@/assets/images/cardReveal7.jpg";
 
-// Image array
 const images = [
   cardReveal1,
   cardReveal2,
@@ -53,14 +52,13 @@ export default function ImageReveal() {
       },
       (context) => {
         const { isDesktop, isMobile } = context.conditions;
-
         if (!container.current) return;
 
         const cards = container.current.querySelectorAll(".card");
         const images = container.current.querySelectorAll(".image-inner");
         const totalCards = cards.length;
 
-        // Initial states
+        // Initial positions
         gsap.set(cards[0], { y: "0%", scale: 1, rotate: 0 });
         gsap.set(images[0], { scale: 1 });
 
@@ -131,18 +129,25 @@ export default function ImageReveal() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="w-full left-0 relative py-3 overflow-hidden">
-      <section className="intro relative w-full md:h-[25vh] sm:h-[40vh] lg:h-[35vh] p-3">
-        {/* Optional intro content */}
-      </section>
+    <section
+      ref={container}
+      className="w-full left-0 relative py-3 overflow-hidden 
+                 bg-gradient-to-b from-gray-900 via-black to-gray-900"
+    >
+      {/* Intro Section */}
+      <section className="intro relative w-full md:h-[25vh] sm:h-[40vh] lg:h-[35vh] p-3" />
 
+      {/* Sticky Cards */}
       <section className="sticky-card relative w-full h-[30vh] sm:h-[40vh] md:min-h-[80vh] lg:h-[40vh] p-2 flex justify-center">
         <section className="cards-container relative w-full sm:h-full md:h-auto rounded-lg overflow-hidden">
           {tags.map((tag, index) => (
             <div
               key={index}
-              className="card absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] md:w-[80vw] sm:h-full md:h-[80vh] flex items-center justify-center rounded-lg overflow-hidden"
+              className="card absolute top-0 left-1/2 -translate-x-1/2 
+                         w-[80vw] md:w-[80vw] sm:h-full md:h-[80vh] 
+                         flex items-center justify-center rounded-lg overflow-hidden"
             >
+              {/* Image with overlay */}
               <div className="relative w-full h-full image-inner">
                 {isProduction ? (
                   <Image
@@ -159,7 +164,11 @@ export default function ImageReveal() {
                     className="w-full h-full object-cover"
                   />
                 )}
+                {/* Dark overlay for better text visibility */}
+                <div className="absolute inset-0 bg-black/20"></div>
               </div>
+
+              {/* Tag text */}
               <h3 className="absolute text-white text-3xl font-bold z-10">
                 {tag}
               </h3>
@@ -168,8 +177,8 @@ export default function ImageReveal() {
         </section>
       </section>
 
-      {/* Spacer to prevent overlap */}
-      <div className="h-[10vh] md:h-[40vh]"></div>
+      {/* Spacer */}
+      <div className="h-[10vh] md:h-[40vh]" />
     </section>
   );
 }

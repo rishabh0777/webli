@@ -3,9 +3,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-
-
-
 export default function Hero() {
   const topTextRef = useRef([]);
   const bottomTextRef = useRef([]);
@@ -48,15 +45,14 @@ export default function Hero() {
           repeat: -1,
           yoyo: true,
           delay: i * 0.05,
-          opacity: 1, // Ensure characters stay visible
+          opacity: 1,
         });
       });
     };
 
-    flagEntrance(topTextRef.current, 0);         // Animate top line
-    flagEntrance(bottomTextRef.current, 0.4);    // Animate bottom line
+    flagEntrance(topTextRef.current, 0);
+    flagEntrance(bottomTextRef.current, 0.4);
 
-    // Arrow entrance animation
     gsap.fromTo(
       arrowRef.current,
       { y: 40, opacity: 0 },
@@ -69,7 +65,6 @@ export default function Hero() {
       }
     );
 
-    // Arrow bounce loop
     gsap.to(arrowRef.current, {
       y: -10,
       repeat: -1,
@@ -93,8 +88,11 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative sm:min-h-[92vh] md:min-h-[100vh] w-full px-[4vw] z-[50] bg-[#060606] flex justify-center items-center text-white overflow-hidden"
+      className="relative sm:min-h-[92vh] md:min-h-[100vh] w-full px-[4vw] z-[50] 
+                 bg-gradient-to-b from-gray-900 via-black to-gray-900 
+                 flex justify-center items-center text-white overflow-hidden"
     >
+      {/* <h1 className="text-2xl fixed top-0 left-1/2 -translate-x-1/2">The site in Maintainance</h1> */}
       <div className="w-full sm:min-h-[10vh] md:min-h-[40vh] flex flex-col text-[7vw] relative whitespace-nowrap font-bold">
         <h1 className="absolute top-0 left-[30%] -translate-x-[30%] tracking-[0.1em] flex gap-[0.1em]">
           {renderText("WE BUILD", topTextRef)}
@@ -105,7 +103,10 @@ export default function Hero() {
       </div>
 
       {/* Scroll Down Arrow */}
-      <div ref={arrowRef} className="absolute bottom-[10vh] opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl">
+      <div
+        ref={arrowRef}
+        className="absolute bottom-[10vh] opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl"
+      >
         <i className="ri-arrow-down-line opacity-70" />
       </div>
     </section>

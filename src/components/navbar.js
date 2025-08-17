@@ -115,7 +115,7 @@ export default function Navbar() {
           ref={buttonRef}
           onClick={() => {
             const link = document.createElement("a");
-            link.href = "/webliPricing&Services.pdf";
+            link.href = "/webliPricing&Services1.pdf";
             link.download = "webliPricing&Services";
             document.body.appendChild(link);
             link.click();

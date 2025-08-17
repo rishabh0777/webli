@@ -77,7 +77,12 @@ export default function About() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} id="about" className="relative w-full min-h-[100vh] py-10 px-[4vw]">
+    <section
+      ref={containerRef}
+      id="about"
+      className="relative w-full min-h-[100vh] py-10 px-[4vw] 
+                 bg-gradient-to-b from-gray-900 via-black to-gray-900"
+    >
       <h1
         ref={headRef}
         className="sm:text-[10vw] md:text-[4vw] font-bold text-center text-white"
