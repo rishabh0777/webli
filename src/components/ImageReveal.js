@@ -139,7 +139,7 @@ export default function ImageReveal() {
 
       {/* Sticky Cards */}
       <section className="sticky-card relative w-full h-[30vh] sm:h-[40vh] md:min-h-[80vh] lg:h-[40vh] p-2 flex justify-center">
-        <section className="cards-container relative w-full sm:h-full md:h-auto rounded-lg overflow-hidden">
+        <section className="cards-container relative w-full sm:h-auto md:h-auto rounded-lg overflow-hidden">
           {tags.map((tag, index) => (
             <div
               key={index}
