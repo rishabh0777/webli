@@ -1,4 +1,5 @@
-// ✅ SERVER COMPONENT: metadata allowed
+import HomeClient from "./HomeClient";
+
 export const metadata = {
   title: "Webli - We Build, You Launch 🚀",
   description:
@@ -54,7 +55,7 @@ export const metadata = {
     "company website maker",
     "fast website agency",
     "top web design agency",
-    "digital presence for small business"
+    "digital presence for small business",
   ],
   openGraph: {
     title: "Webli - We Build, You Launch 🚀",
@@ -80,18 +81,10 @@ export const metadata = {
       "We build websites that convert. Beautiful, fast, and scalable.",
     images: ["https://webli.vercel.app/logo/TransparentWhite.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/logo/favicons/favicon-32x32.png",
-    apple: "/logo/favicons/apple-touch-icon.png",
-  },
-  metadataBase: new URL("https://webli.vercel.app"),
   alternates: {
     canonical: "https://webli.vercel.app",
   },
 };
-
-import HomeClient from "./HomeClient";
 
 export default function Page() {
   return <HomeClient />;

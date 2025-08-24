@@ -7,9 +7,9 @@ export const metadata = {
   description:
     "Webli is a web development agency building modern, animated, and fast websites for startups and small businesses. We create professional, fast, and conversion-focused websites for businesses of all sizes.",
   icons: {
-    icon: "/favicon.ico", // main root favicon (Google looks here)
-    shortcut: "/logo/favicons/favicon-32x32.png", // for browsers
-    apple: "/logo/favicons/apple-touch-icon.png", // for iOS devices
+    icon: "/favicon.ico", // main root favicon
+    shortcut: "/logo/favicons/favicon-32x32.png",
+    apple: "/logo/favicons/apple-touch-icon.png",
   },
   metadataBase: new URL("https://webli.vercel.app"),
   alternates: {
