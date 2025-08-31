@@ -130,7 +130,7 @@ export default function HorizontalScrollText() {
 
   return (
     <section
-      className="relative w-full sm:h-[250vh] md:h-[190vh] overflow-hidden 
+      className="relative w-full sm:h-[160vh] md:h-[190vh] overflow-hidden 
                  bg-gradient-to-b from-gray-900 via-black to-gray-900"
     >
       <section className="wrapper relative w-[900vw] sm:h-[80vh] md:h-screen will-change-transform sm:p-[10em] md:p-[5em]">
