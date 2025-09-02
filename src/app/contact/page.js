@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,7 +18,7 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
-    company: ""
+    company: "",
   });
 
   const handleChange = (e) => {
@@ -32,6 +32,7 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Animate headings
       gsap.from(".heading", {
         opacity: 0,
         y: 70,
@@ -40,10 +41,11 @@ export default function Contact() {
         scrollTrigger: {
           trigger: ".heading",
           start: "top 85%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
       });
 
+      // Animate inputs
       gsap.from('[data-gsap="input"]', {
         opacity: 0,
         y: 40,
@@ -53,8 +55,21 @@ export default function Contact() {
         scrollTrigger: {
           trigger: '[data-gsap="input"]',
           start: "top 90%",
-          toggleActions: "play none none none"
-        }
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animate visible paragraphs
+      gsap.from(".animate-paragraph", {
+        opacity: 0,
+        y: 30,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".animate-paragraph",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
       });
     }, sectionRef);
 
@@ -72,9 +87,15 @@ export default function Contact() {
 
     setLoading(true);
     try {
-      await axios.post('https://backend-webli.onrender.com/send', formData);
+      await axios.post("https://backend-webli.onrender.com/send", formData);
       toast.success("✅ Message sent successfully!");
-      setFormData({ name: "", email: "", subject: "", message: "", company: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        company: "",
+      });
     } catch (error) {
       toast.error("❌ Something went wrong!");
     } finally {
@@ -89,12 +110,17 @@ export default function Contact() {
       className="relative w-full min-h-screen flex sm:flex-col md:flex-row items-center px-[4vw] py-[6vh]
                  bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white"
     >
+      {/* SEO Hidden Heading */}
+      <h2 className="sr-only">Contact Webli Studio - Creative Web Development Agency</h2>
+
       {/* Left Side */}
       <div className="md:w-1/2 sm:w-full md:h-[80%] flex flex-col justify-between mb-10 md:mb-0">
         <div>
-          <h1 className="heading md:text-[5vw] sm:text-[10vw] font-bold">Let&apos;s collaborate</h1>
+          <h1 className="heading md:text-[5vw] sm:text-[10vw] font-bold">
+            Let&apos;s collaborate
+          </h1>
           <p
-            className="heading cursor-pointer underline"
+            className="heading animate-paragraph cursor-pointer underline"
             onClick={() => window.open("https://webli.vercel.app", "_blank")}
           >
             webli.vercel.app
@@ -105,8 +131,19 @@ export default function Contact() {
         <div className="hidden md:flex flex-col gap-2 heading">
           <h3>Find us</h3>
           <div className="flex gap-3 items-center text-[2vw]">
-            <i onClick={() => window.open("https://instagram.com/webli__", "_blank")} className="ri-instagram-fill cursor-pointer"></i>
-            <i onClick={() => window.open("https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b", "_blank")} className="ri-linkedin-fill cursor-pointer"></i>
+            <i
+              onClick={() => window.open("https://instagram.com/webli__", "_blank")}
+              className="ri-instagram-fill cursor-pointer"
+            ></i>
+            <i
+              onClick={() =>
+                window.open(
+                  "https://www.linkedin.com/in/webli-creative-web-development-agency-250a5336b",
+                  "_blank"
+                )
+              }
+              className="ri-linkedin-fill cursor-pointer"
+            ></i>
           </div>
         </div>
       </div>
@@ -204,7 +241,8 @@ export default function Contact() {
                 loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {loading ? "Sending..." : "Submit"} <i className="ri-arrow-right-line"></i>
+              {loading ? "Sending..." : "Submit"}{" "}
+              <i className="ri-arrow-right-line"></i>
             </button>
           </div>
         </form>
@@ -212,7 +250,7 @@ export default function Contact() {
 
       {/* Footer Year */}
       <div className="w-full absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center mt-6">
-        <p className="text-center sm:text-[3.6vw] md:text-[1vw]">
+        <p className="animate-paragraph text-center sm:text-[3.6vw] md:text-[1vw]">
           © {year} Webli Studio. All rights reserved.
         </p>
       </div>

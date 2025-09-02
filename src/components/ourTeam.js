@@ -23,6 +23,7 @@ export default function OurTeam() {
       img: pawanImg,
       bg: "bg-blue-200",
       myRef: member1,
+      alt: "Pawan - Frontend Lead at Webli",
     },
     {
       name: "Rishabh",
@@ -30,6 +31,7 @@ export default function OurTeam() {
       img: rishabhImg,
       bg: "bg-yellow-200",
       myRef: member2,
+      alt: "Rishabh - Founder & Fullstack Developer at Webli",
     },
     {
       name: "Shubham",
@@ -37,6 +39,7 @@ export default function OurTeam() {
       img: shubhamImg,
       bg: "bg-green-200",
       myRef: member3,
+      alt: "Shubham - Backend Developer & Marketer at Webli",
     },
   ];
 
@@ -83,10 +86,12 @@ export default function OurTeam() {
 
   return (
     <section className="relative w-full min-h-[50vh] mt-[6vh]">
-      <section className="w-full px-[4vw] py-[4vh] text-center overflow-hidden sm:text-[7vw] md:text-[4vw] md:leading-[4vw]">
-        <h2 ref={head1}>Creative Coders</h2>
-        <h2 ref={head2}>United by Passion</h2>
-      </section>
+      <header className="w-full px-[4vw] py-[4vh] text-center overflow-hidden sm:text-[7vw] md:text-[4vw] md:leading-[4vw]">
+        <h2 ref={head1}>Meet Our Creative Coders</h2>
+        <p ref={head2} className="text-lg md:text-xl text-gray-300 mt-2">
+          A passionate team united by design, development, and innovation
+        </p>
+      </header>
 
       <section className="w-full flex justify-center sm:gap-2 md:gap-6 mt-[8vh]">
         {myTeam.map((detail, index) => (
@@ -97,6 +102,7 @@ export default function OurTeam() {
             name={detail.name}
             role={detail.role}
             bg={detail.bg}
+            alt={detail.alt} // ✅ SEO-friendly alt text
           />
         ))}
       </section>

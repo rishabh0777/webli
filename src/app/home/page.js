@@ -90,9 +90,14 @@ export default function Hero() {
       id="home"
       className="relative sm:min-h-[92vh] md:min-h-[100vh] w-full px-[4vw] z-[50] 
                  bg-gradient-to-b from-gray-900 via-black to-gray-900 
-                 flex justify-center items-center text-white overflow-hidden"
+                 flex flex-col justify-center items-center text-white overflow-hidden"
     >
-      {/* <h1 className="text-2xl fixed top-0 left-1/2 -translate-x-1/2">The site in Maintainance</h1> */}
+      {/* ✅ SEO-friendly hidden H1 */}
+      <h1 className="sr-only">
+        Webli Studio - Web Development Agency for Startups and Small Businesses
+      </h1>
+
+      {/* Animated Headline */}
       <div className="w-full sm:min-h-[10vh] md:min-h-[40vh] flex flex-col text-[7vw] relative whitespace-nowrap font-bold">
         <h1 className="absolute top-0 left-[30%] -translate-x-[30%] tracking-[0.1em] flex gap-[0.1em]">
           {renderText("WE BUILD", topTextRef)}
@@ -101,6 +106,18 @@ export default function Hero() {
           {renderText("YOU LAUNCH", bottomTextRef)}
         </h1>
       </div>
+
+      {/* ✅ SEO Intro Paragraph (readable content for bots) */}
+      <p className="mt-6 max-w-2xl sr-only text-center text-gray-300 text-base md:text-lg px-4">
+        At <strong>Webli Studio</strong>, we create{" "}
+        <strong>modern, animated, and SEO-optimized websites</strong> that help{" "}
+        <strong>startups</strong> and <strong>small businesses</strong> launch
+        faster and grow smarter. Our expertise in{" "}
+        <strong>MERN stack development</strong>,{" "}
+        <strong>custom website design</strong>, and{" "}
+        <strong>responsive web solutions</strong> ensures your digital presence
+        stands out and converts.
+      </p>
 
       {/* Scroll Down Arrow */}
       <div

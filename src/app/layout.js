@@ -40,6 +40,24 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
+
+        {/* ✅ JSON-LD Schema for Website */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Webli Studio",
+              url: "https://webli.vercel.app",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://webli.vercel.app/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
       </head>
       <body>
         <main>{children}</main>
