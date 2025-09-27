@@ -121,7 +121,7 @@ export default function Navbar() {
             link.click();
             document.body.removeChild(link);
           }}
-          className="px-4 py-1 bg-white text-black sm:text-[3.5vw] md:text-[1vw] rounded-md hover:bg-red-400 hover:text-white transition-all duration-300 opacity-0"
+          className="px-4 py-1 bg-white text-black sm:text-[3.5vw] md:text-[1vw] rounded-md hover:bg-black hover:shadow-white hover:shadow-md hover:text-white transition-all duration-300 opacity-0"
         >
           Pricing
         </button>
