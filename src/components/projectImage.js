@@ -13,9 +13,8 @@ export default function ProjectImage({ projectDetails, active }) {
           src={projectDetails.image}
           alt={projectDetails.name}
           fill
-          quality={100} // ✅ keeps image crisp
-          unoptimized={false}
-          className="object-cover image-sharp"
+          quality={100}
+          className="object-cover"
           sizes="(max-width: 768px) 100vw, 256px"
         />
       </div>
