@@ -5,6 +5,7 @@ export const metadata = {
   description:
     "Webli is a web development agency building modern, animated, and fast websites for startups and small businesses. We create professional, fast, and conversion-focused websites for businesses of all sizes.",
   keywords: [
+    "webli",
     "Webli",
     "Webli Studio",
     "Webli Web Development Agency",
@@ -86,6 +87,13 @@ export const metadata = {
   },
 };
 
+
+
 export default function Page() {
-  return <HomeClient />;
+  return (
+
+    <>
+      <HomeClient />
+    </>
+  );
 }

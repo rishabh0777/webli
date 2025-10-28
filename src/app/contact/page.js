@@ -84,18 +84,27 @@ export default function Contact() {
       toast.error("All fields are required!");
       return;
     }
+   
 
     setLoading(true);
     try {
-      await axios.post("https://backend-webli.onrender.com/send", formData);
-      toast.success("✅ Message sent successfully!");
-      setFormData({
+      const response = await axios.post("https://backend-webli.onrender.com/send",formData);
+      if (response.status === 200) {
+        toast.success("✅ Message sent successfully!");
+        setLoading(false);
+        setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
         company: "",
       });
+
+      } else {
+        toast.error("❌ Something went wrong!");
+      }
+      console.log(response.data);
+      
     } catch (error) {
       toast.error("❌ Something went wrong!");
     } finally {
@@ -132,7 +141,7 @@ export default function Contact() {
           <h3>Find us</h3>
           <div className="flex gap-3 items-center text-[2vw]">
             <i
-              onClick={() => window.open("https://instagram.com/webli__", "_blank")}
+              onClick={() => window.open("https://instagram.com/webli_studio", "_blank")}
               className="ri-instagram-fill cursor-pointer"
             ></i>
             <i
@@ -219,7 +228,7 @@ export default function Contact() {
             {/* Mobile Icons */}
             <div className="flex gap-3 items-center md:hidden">
               <i
-                onClick={() => window.open("https://instagram.com/webli__", "_blank")}
+                onClick={() => window.open("https://instagram.com/webli_studio", "_blank")}
                 className="ri-instagram-fill text-[6vw] cursor-pointer"
               ></i>
               <i
