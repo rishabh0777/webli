@@ -72,9 +72,9 @@ export default function HomeClient() {
       <HeroMain />
       <ServiceMain />
       <HorizontalScrollText />
-      <ImageReveal />
       <AboutMain />
       <PortfolioMain />
+      <ImageReveal />
       <ContactMain />
     </section>
     )
