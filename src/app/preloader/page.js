@@ -68,13 +68,13 @@ const Preloader = () => {
   const emojis = ["✨", "💻", "🚀", "🎨", "🔥", "🌐", "⚡"];
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black text-white z-[9999] overflow-hidden">
+    <div className="fixed inset-0 flex items-center w-full justify-center bg-black text-white z-[9999] overflow-hidden">
       {/* Floating Emojis */}
       {emojis.map((emoji, i) => (
         <span
           key={i}
           ref={(el) => (emojiRefs.current[i] = el)}
-          className="absolute text-[2vw] opacity-60"
+          className="absolute text-[5vw] md:text-[2vw] opacity-60"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
@@ -85,7 +85,7 @@ const Preloader = () => {
       ))}
 
       {/* Top Info Bar */}
-      <div className="absolute top-0 left-0 h-[12vh] w-full flex justify-between items-center px-14 text-[1.2vw] font-light">
+      <div className="absolute top-0 left-0 h-[12vh] w-full flex justify-between items-center text-[4vw] px-2 md:px-14 md:text-[1.2vw] font-light">
         <h2>
           <i className="ri-map-pin-line"></i> INDIA{" "}
           <span className="opacity-70">
@@ -104,35 +104,35 @@ const Preloader = () => {
             className="cursor-pointer hover:text-green-400 transition-colors"
             onClick={handleWhatsAppClick}
           >
-            <i className="ri-whatsapp-line text-[1.5vw]" />
+            <i className="ri-whatsapp-line text-[5vw] md:text-[1.5vw]" />
           </span>
         </h2>
       </div>
 
       {/* Center Text */}
       <div className="w-[80vw] h-[60vh] flex flex-col items-center justify-center text-center">
-        <h1 className="main-line text-[2.5vw] font-light tracking-wide">
+        <h1 className="main-line md:text-[2.5vw] font-light tracking-wide">
           NEED A{" "}
           <span
             ref={textRef}
-            className="text-white font-bold text-[3vw] mx-2 text-yellow-500 border-white"
+            className="text-white font-bold text-[6vw] md:text-[3vw] mx-2 text-yellow-500 border-white"
           >
             {currentText}
           </span>{" "}
           WEBSITE?
         </h1>
-        <p className="main-line text-[1.2vw] opacity-80 mt-2">
+        <p className="main-line text-[4vw] md:text-[1.2vw] opacity-80 mt-2">
           Please wait — the experience is loading beautifully...
         </p>
       </div>
 
       {/* Bottom Info Bar */}
-      <div className="absolute bottom-0 left-0 h-[12vh] w-full flex justify-between items-center px-14 text-[1.2vw] font-light">
+      <div className="absolute bottom-0 left-0 h-[12vh] w-full flex justify-between items-center text-[4vw] px-2 md:px-14 md:text-[1.2vw] font-light">
         <h2>
           © {new Date().getFullYear()}{" "}
           <span
             onClick={() => window.open("https://webli.vercel.app/", "_blank")}
-            className="cursor-pointer hover:text-yellow-300 transition-colors"
+            className="cursor-pointer text-red-500 hover:text-yellow-300 transition-colors "
           >
             WEBLI STUDIO
           </span>
