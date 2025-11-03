@@ -16,15 +16,20 @@ import ContactMain from "./contact/index.js";
 import Preloader from "./preloader/page.js"
 
 export default function HomeClient() {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   
   const loading = async ()=>{
+
     try{
       const response = await fetch('https://backend-webli.onrender.com');
       if(response.ok){
-        setIsLoading(false);
+        // set loading false after 5 seconds
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 10000);
       }
+       
     }catch(err){
       console.log(err);
 
@@ -57,6 +62,7 @@ export default function HomeClient() {
  
 
   return (
+   
     isLoading ? (
       <Preloader />
     ) : (

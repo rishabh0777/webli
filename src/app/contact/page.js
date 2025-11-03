@@ -88,7 +88,14 @@ export default function Contact() {
 
     setLoading(true);
     try {
-      const response = await axios.post("https://backend-webli.onrender.com/send",formData);
+      const response = await fetch("https://backend-webli.onrender.com/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData),
+      });
+      
       if (response.status === 200) {
         toast.success("✅ Message sent successfully!");
         setLoading(false);

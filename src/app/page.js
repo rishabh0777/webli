@@ -57,6 +57,9 @@ export const metadata = {
     "fast website agency",
     "top web design agency",
     "digital presence for small business",
+    "web development for startups",
+    "custom website solutions",
+    "website maintenance and support",
   ],
   openGraph: {
     title: "Webli - We Build, You Launch 🚀",
@@ -74,13 +77,20 @@ export const metadata = {
     ],
     locale: "en_IN",
     type: "website",
+     
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary_large_image",    
     title: "Webli - We Build, You Launch 🚀",
     description:
       "We build websites that convert. Beautiful, fast, and scalable.",
-    images: ["https://webli.vercel.app/logo/TransparentWhite.png"],
+    images: [
+      "https://webli.vercel.app/logo/TransparentWhite.png",
+      "https://webli.vercel.app/logo/TransparentBlack.png",
+      "https://webli.vercel.app/logo/White.png",
+      "https://webli.vercel.app/logo/Black.png",
+      "https://webli.vercel.app/logo/LogoIcon.png",
+    ],
   },
   alternates: {
     canonical: "https://webli.vercel.app",
