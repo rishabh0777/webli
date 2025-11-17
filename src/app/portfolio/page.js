@@ -12,6 +12,8 @@ import LionsDenCafe from "../../assets/images/lionsDenCafe.png";
 import TimelessVogue from "../../assets/images/timelessVogue.png";
 import SereneStays from "../../assets/images/sereneStays.png";
 import JerdonVilla from "../../assets/images/jerdonVilla.png";
+import AathavanFilms from "../../assets/images/aathavan.png"
+
 
 export default function Portfolio() {
   const headRef = useRef(null);
@@ -24,8 +26,9 @@ export default function Portfolio() {
     { id: 1, name: "Lion's Den Cafe", url: "https://lionsdencafe.vercel.app", image: LionsDenCafe },
     { id: 2, name: "Founder Portfolio", url: "https://rishabhsrivastava.vercel.app", image: FounderPortfolio },
     { id: 3, name: "Timeless Vogue", url: "https://timelessvogue.vercel.app", image: TimelessVogue },
-    { id: 4, name: "Serene Stays", url: "https://serenestays.vercel.app", image: SereneStays },
-    { id: 5, name: "Jerdon Villa", url: "https://jerdonvilla.vercel.app", image: JerdonVilla },
+    {id:4, name: "Aathavan Films", url:"https://aathavanfilms.vercel.app", image: AathavanFilms},
+    { id: 5, name: "Serene Stays", url: "https://serenestays.vercel.app", image: SereneStays },
+    { id: 6, name: "Jerdon Villa", url: "https://jerdonvilla.in", image: JerdonVilla },
   ];
 
   useEffect(() => {
