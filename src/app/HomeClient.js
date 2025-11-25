@@ -18,7 +18,6 @@ export default function HomeClient() {
   
 
   useEffect(() => {
-    loading();
     const lenis = new Lenis({
       duration: 1.2,
       smooth: true,
@@ -43,7 +42,6 @@ export default function HomeClient() {
  
 
   return (
-   
       <section className="relative w-full bg-[#060606] overflow-hidden">
       <ScrollToTop />
       <Navbar />

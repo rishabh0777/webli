@@ -77,47 +77,55 @@ export default function Contact() {
   }, []);
 
   const messageSubmissionAnimation = async (e) => {
-    e.preventDefault();
-    const { name, email, subject, message, company } = formData;
+  e.preventDefault();
+  const { name, email, subject, message, company } = formData;
 
-    if (!name || !email || !subject || !message || !company) {
-      toast.error("All fields are required!");
-      return;
-    }
-   
+  if (!name || !email || !subject || !message || !company) {
+    toast.error("All fields are required!");
+    return;
+  }
 
-    setLoading(true);
-    try {
-      const response = await fetch("https://backend-webli.onrender.com/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData),
-      });
-      
-      if (response.status === 200) {
-        toast.success("✅ Message sent successfully!");
-        setLoading(false);
-        setFormData({
+  setLoading(true);
+  const web3FormsKey = process.env.NEXT_PUBLIC_FORM_KEY;
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        access_key: web3FormsKey,
+        name,
+        email,
+        subject,
+        message,
+        company
+      }),
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      toast.success("✅ Message sent successfully!");
+      setFormData({
         name: "",
         email: "",
         subject: "",
         message: "",
         company: "",
       });
-
-      } else {
-        toast.error("❌ Something went wrong!");
-      }
-      console.log(response.data);
-      
-    } catch (error) {
+    } else {
       toast.error("❌ Something went wrong!");
-    } finally {
-      setLoading(false);
     }
-  };
+
+  } catch (error) {
+    toast.error("❌ Network error!");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <section
