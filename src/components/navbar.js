@@ -98,64 +98,76 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full sm:h-[10vh] md:h-[8vh] px-[4vw] flex justify-between items-center bg-transparent text-white z-[1000]">
-      {/* Logo */}
-      <section className="sm:w-[20vw] md:w-[5vw] absolute z-[905]">
-        <img
-          ref={logoRef}
-          src="/logo/TransparentWhite.png"
-          alt="webli logo"
-          className="w-full opacity-0"
-        />
-      </section>
+    <nav className="fixed top-0 left-0 w-full h-[10vh] md:h-[12vh] px-[5vw] 
+                flex justify-between items-center bg-transparent text-white 
+                z-[1000]">
+  {/* ✅ Logo */}
+  <div className="w-[28vw] sm:w-[22vw] md:w-[10vw] z-[905]">
+    <img
+      ref={logoRef}
+      src="/logo/TransparentWhite.png"
+      alt="webli logo"
+      className="w-full opacity-0"
+    />
+  </div>
 
-      {/* Pricing + Menu */}
-      <section className="w-[45vw] h-full absolute right-[4vw] flex gap-4 justify-end items-center">
-        <button
-          ref={buttonRef}
-          onClick={() => {
-            const link = document.createElement("a");
-            link.href = "/webliPricing&Services1.pdf";
-            link.download = "webliPricing&Services";
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-          className="px-4 py-1 bg-white text-black sm:text-[3.5vw] md:text-[1vw] rounded-md hover:bg-black hover:text-white transition-all duration-300 opacity-0"
-        >
-          Pricing
-        </button>
-        <i
-          ref={menuBarRef}
-          onClick={toggleNavbar}
-          className={`bx ${show ? "bx-x" : "bx-menu"} sm:text-[7vw] md:text-[1.5vw] cursor-pointer transition duration-700 z-[905] opacity-0`}
-        ></i>
-      </section>
+  {/* ✅ Right Section */}
+  <div className="flex items-center gap-4 z-[905]">
+    <button
+      ref={buttonRef}
+      onClick={() => {
+        const link = document.createElement("a");
+        link.href = "/webliPricing&Services1.pdf";
+        link.download = "webliPricing&Services";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }}
+      className="px-3 py-[4px] bg-white text-black 
+                 text-[3.5vw] sm:text-[2.6vw] md:text-[1vw]
+                 rounded-md hover:bg-black hover:text-white 
+                 transition-all duration-300 opacity-0"
+    >
+      Pricing
+    </button>
 
-      {/* Full-screen Menu */}
-      <section
-        ref={hamburgRef}
-        className="fixed w-screen h-screen top-[-100vh] left-0 flex justify-center items-center bg-[#060606] z-[900]"
-      >
-        <ul className="flex flex-col gap-6 sm:text-[11vw] md:text-[4vw] text-center">
-          {["Home", "Service", "About", "Portfolio", "Contact"].map((item, index) => {
-            const key = item.toLowerCase();
-            const isActive = key === activeSection;
-            return (
-              <li
-                key={key}
-                ref={(el) => (navLinksRef.current[index] = el)}
-                onClick={() => handleItemClick(key)}
-                className={`cursor-pointer transition-colors duration-300 ${
-                  isActive ? "text-white" : "text-zinc-500"
-                } hover:text-white`}
-              >
-                {item}
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </nav>
+    <i
+      ref={menuBarRef}
+      onClick={toggleNavbar}
+      className={`bx ${show ? "bx-x" : "bx-menu"} 
+                  text-[7vw] sm:text-[5vw] md:text-[2vw] 
+                  cursor-pointer transition duration-700 opacity-0`}
+    ></i>
+  </div>
+
+  {/* ✅ Full-screen Menu */}
+  <div
+    ref={hamburgRef}
+    className="fixed w-screen h-screen top-[-100vh] left-0 
+               flex justify-center items-center bg-[#060606] z-[900]"
+  >
+    <ul className="flex flex-col gap-6 
+                   text-[12vw] sm:text-[9vw] md:text-[4vw] 
+                   text-center font-semibold tracking-wide">
+      {["Home", "Service", "About", "Portfolio", "Contact"].map((item, index) => {
+        const key = item.toLowerCase();
+        const isActive = key === activeSection;
+        return (
+          <li
+            key={key}
+            ref={(el) => (navLinksRef.current[index] = el)}
+            onClick={() => handleItemClick(key)}
+            className={`cursor-pointer transition-colors duration-300 ${
+              isActive ? "text-white" : "text-zinc-500"
+            } hover:text-white`}
+          >
+            {item}
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
+
   );
 }

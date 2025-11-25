@@ -87,45 +87,45 @@ export default function Hero() {
 
   return (
     <section
-      id="home"
-      className="relative sm:min-h-[92vh] md:min-h-[100vh] w-full px-[4vw] z-[50] 
-                 bg-gradient-to-b from-gray-900 via-black to-gray-900 
-                 flex flex-col justify-center items-center text-white overflow-hidden"
+  id="home"
+  className="relative min-h-[92vh] md:min-h-[100vh] w-full px-[4vw] z-[50]
+             bg-gradient-to-b from-gray-900 via-black to-gray-900
+             flex flex-col justify-center items-center text-white overflow-hidden"
+>
+  {/* ✅ SEO-friendly hidden H1 */}
+  <h1 className="sr-only">
+    Webli Studio - Web Development Agency for Startups and Small Businesses
+  </h1>
+
+  {/* ✅ Hero Text Wrapper */}
+  <div className="w-full flex flex-col justify-center items-center text-center 
+                  leading-[1.1] select-none">
+    <h1
+      className="flex gap-[0.1em] flex-wrap justify-center
+                 text-[10vw] sm:text-[9vw] md:text-[6vw] lg:text-[5vw]
+                 tracking-[0.05em] font-bold"
     >
-      {/* ✅ SEO-friendly hidden H1 */}
-      <h1 className="sr-only">
-        Webli Studio - Web Development Agency for Startups and Small Businesses
-      </h1>
+      {renderText("WE BUILD", topTextRef)}
+    </h1>
 
-      {/* Animated Headline */}
-      <div className="w-full sm:min-h-[10vh] md:min-h-[40vh] flex flex-col text-[7vw] relative whitespace-nowrap font-bold">
-        <h1 className="absolute top-0 left-[30%] -translate-x-[30%] tracking-[0.1em] flex gap-[0.1em]">
-          {renderText("WE BUILD", topTextRef)}
-        </h1>
-        <h1 className="absolute left-[70%] -translate-x-[70%] bottom-0 tracking-[0.1em] flex gap-[0.1em]">
-          {renderText("YOU LAUNCH", bottomTextRef)}
-        </h1>
-      </div>
+    <h1
+      className="flex gap-[0.1em] flex-wrap justify-center 
+                 text-[10vw] sm:text-[9vw] md:text-[6vw] lg:text-[5vw]
+                 tracking-[0.05em] font-bold mt-2"
+    >
+      {renderText("YOU LAUNCH", bottomTextRef)}
+    </h1>
+  </div>
 
-      {/* ✅ SEO Intro Paragraph (readable content for bots) */}
-      <p className="mt-6 max-w-2xl sr-only text-center text-gray-300 text-base md:text-lg px-4">
-        At <strong>Webli Studio</strong>, we create{" "}
-        <strong>modern, animated, and SEO-optimized websites</strong> that help{" "}
-        <strong>startups</strong> and <strong>small businesses</strong> launch
-        faster and grow smarter. Our expertise in{" "}
-        <strong>MERN stack development</strong>,{" "}
-        <strong>custom website design</strong>, and{" "}
-        <strong>responsive web solutions</strong> ensures your digital presence
-        stands out and converts.
-      </p>
+  {/* ✅ Scroll Down Arrow */}
+  <div
+    ref={arrowRef}
+    className="absolute bottom-[6vh] md:bottom-[8vh] left-1/2 -translate-x-1/2 
+               text-white text-[7vw] sm:text-[5vw] md:text-[2vw] opacity-0"
+  >
+    <i className="ri-arrow-down-line opacity-70" />
+  </div>
+</section>
 
-      {/* Scroll Down Arrow */}
-      <div
-        ref={arrowRef}
-        className="absolute bottom-[10vh] opacity-0 left-1/2 -translate-x-1/2 text-white text-3xl"
-      >
-        <i className="ri-arrow-down-line opacity-70" />
-      </div>
-    </section>
   );
 }
