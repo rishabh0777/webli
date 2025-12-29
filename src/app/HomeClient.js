@@ -40,7 +40,7 @@ export default function HomeClient() {
     };
   }, []);
 
-  const isMentanance = true;
+  const isMentanance = process.env.NEXT_PUBLIC_IS_MAINTENANCE_MODE;
   
  
 
