@@ -14,6 +14,8 @@ import ScrollToTop from "../components/scrollToTop";
 import PortfolioMain from "./portfolio/index.js";
 import ContactMain from "./contact/index.js";
 
+import Mentanance from "./mentanance/page.js";
+
 export default function HomeClient() {
   
 
@@ -38,11 +40,14 @@ export default function HomeClient() {
     };
   }, []);
 
+  const isMentanance = true;
   
  
 
-  return (
-      <section className="relative w-full bg-[#060606] overflow-hidden">
+  return isMentanance ? (
+    <Mentanance />
+  ) : (
+    <section className="relative w-full bg-[#060606] overflow-hidden">
       <ScrollToTop />
       <Navbar />
       <HeroMain />
@@ -53,5 +58,5 @@ export default function HomeClient() {
       <ImageReveal />
       <ContactMain />
     </section>
-    );
+  );
 }
