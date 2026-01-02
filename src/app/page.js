@@ -66,10 +66,10 @@ export const metadata = {
     description:
       "Get your startup online with stunning, animated, fast websites. Built by Webli.",
     url: "https://webli.vercel.app",
-    siteName: "Webli",
+    siteName: "Webli Studio",
     images: [
       {
-        url: "https://webli.vercel.app/logo/TransparentWhite.png",
+        url: "https://webli.vercel.app/logo/primaryLogoWhite.svg",
         width: 800,
         height: 800,
         alt: "Webli White Logo",
@@ -85,11 +85,9 @@ export const metadata = {
     description:
       "We build websites that convert. Beautiful, fast, and scalable.",
     images: [
-      "https://webli.vercel.app/logo/TransparentWhite.png",
-      "https://webli.vercel.app/logo/TransparentBlack.png",
-      "https://webli.vercel.app/logo/White.png",
-      "https://webli.vercel.app/logo/Black.png",
-      "https://webli.vercel.app/logo/LogoIcon.png",
+      "https://webli.vercel.app/logo/primaryLogoWhite.svg",
+      "https://webli.vercel.app/logo/primaryLogoBlack.svg",
+      "https://webli.vercel.app/logo/logo.svg",
     ],
   },
   alternates: {
