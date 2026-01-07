@@ -21,11 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* ✅ Google site verification */}
-        <meta
-          name="google-site-verification"
-          content="JtjC0Spp1E4E7qkWm6b3CI6fpyxqbM4CT1FXrAwLR28"
-        />
+        
 
         {/* ✅ JSON-LD Schema for Organization + Logo */}
         <script
